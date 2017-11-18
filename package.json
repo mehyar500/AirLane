@@ -1,7 +1,7 @@
 {
-  "name": "mern",
+  "name": "airlane",
   "version": "1.0.0",
-  "description": "Mern Demo",
+  "description": "Air Share",
   "main": "server.js",
   "scripts": {
     "server": "node server.js",
@@ -10,15 +10,35 @@
     "build": "node scripts/build.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Mehyar, Chris, Sam, Stephane",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^3.5.0",
     "nodemon": "^1.11.0"
   },
   "dependencies": {
+    "axios": "^0.17.1",
+    "babel": "^6.23.0",
     "body-parser": "^1.18.2",
+    "chai": "^4.1.2",
+    "eslint": "^4.11.0",
     "express": "^4.15.4",
+    "mocha": "^4.0.1",
     "mongoose": "^4.13.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mehyar500/AirLane.git"
+  },
+  "keywords": [
+    "airplane",
+    "sharing",
+    "flgiht",
+    "helicopter",
+    "peer-to-peer"
+  ],
+  "bugs": {
+    "url": "https://github.com/mehyar500/AirLane/issues"
+  },
+  "homepage": "https://github.com/mehyar500/AirLane#readme"
 }
