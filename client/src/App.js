@@ -1,14 +1,13 @@
-import Signup from './components/SignUpForm/SignUpForm';
 import React, { Component } from 'react';
-import SignUpForm from "./components/SignUpForm"
+import Appbar from "./components/Appbar";
+import Appbody from "./components/Appbody";
 
 class App extends Component {
   render() {
-    return (
-      <div className="App">
-        <Signup />
-      </div>
-    );
+    return <div className="App">
+        <Appbar />
+        <Appbody />
+      </div>;
   }
 }
 
