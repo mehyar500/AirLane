@@ -7,6 +7,7 @@ class App extends Component {
     return <div className="App">
         <Appbar />
         <Appbody />
+        {/* <Results /> */}
       </div>;
   }
 }
