@@ -1,21 +1,46 @@
 import React, { Component } from "react";
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from "react-bootstrap";
+import {
+  Navbar,
+  Nav,
+  NavItem,
+  NavDropdown,
+  MenuItem
+} from "react-bootstrap";
+import ReactModal from "react-modal";
+import Signup from "./Signup";
 
 class Appbar extends Component {
+
+  constructor() {
+    super();
+    this.state = { showModal: false };
+    this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
+  }
+  
+  handleOpenModal () {
+    this.setState({ showModal: true });
+  }
+  
+  handleCloseModal () {
+    this.setState({ showModal: false });
+  }
+  
+
   render() {
     return <Navbar>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href="#">airLane</a>
+            <a href="">airLane</a>
           </Navbar.Brand>
         </Navbar.Header>
-        <Nav>
-          <NavItem eventKey={1} href="#">
-            Sign Up
-          </NavItem>
-          <NavItem eventKey={2} href="#">
-            Log In
-          </NavItem>
+        <Nav bsStyle="pills">
+            <NavItem onClick={this.handleOpenModal}> Sign Up/Log In</NavItem>
+            <ReactModal isOpen={this.state.showModal} contentLabel="Minimal Modal Example">
+              <NavItem onClick={this.handleCloseModal}>Close
+                <Signup />
+              </NavItem>
+            </ReactModal>
           <NavDropdown eventKey={3} title="Menu" id="basic-nav-dropdown">
             <MenuItem eventKey={3.1}>Profile</MenuItem>
             <MenuItem eventKey={3.2}>Prefrences</MenuItem>
@@ -29,5 +54,3 @@ class Appbar extends Component {
 }
 
 export default Appbar;
-
-
