@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { Button, Form, FormGroup,FormControl, InputGroup } from "react-bootstrap";
 
 class Profile extends Component {
   constructor() {
@@ -11,23 +11,40 @@ class Profile extends Component {
       return <div className="container">
           <Form>
             <FormGroup row>
-              <Label for="firstName">First Name</Label>
-              <Input type="text" name="firstName" id="firstName" placeholder="First Name"/>
+              <InputGroup type="text" name="firstName" id="firstName" placeholder="First Name">
+                <InputGroup.Addon>First Name</InputGroup.Addon>
+                <FormControl type="text" placeholder="First Name" />
+              </InputGroup>
             </FormGroup>
             <FormGroup>
-              <Label>Last Name</Label>
+              <InputGroup type="text" name="lastName" id="lastName" placeholder="Last Name">
+                <InputGroup.Addon>Last Name</InputGroup.Addon>
+                <FormControl type="text" placeholder="Last Name" />
+              </InputGroup>
             </FormGroup>
             <FormGroup>
-              <Label>Email</Label>
+              <InputGroup type="email" name="email" id="email" placeholder="Email">
+                <InputGroup.Addon>Email</InputGroup.Addon>
+                <FormControl type="email" placeholder="Email" />
+              </InputGroup>
             </FormGroup>
             <FormGroup>
-              <Label>Phone</Label>
+              <InputGroup type="number" name="phone" id="phone" placeholder="Phone Number">
+                <InputGroup.Addon>Phone Number</InputGroup.Addon>
+                <FormControl type="number" placeholder="Phone Number" />
+              </InputGroup>
             </FormGroup>
             <FormGroup>
-              <Label>Address</Label>
+              <InputGroup type="address" name="address" id="address" placeholder="Address">
+                <InputGroup.Addon>Address</InputGroup.Addon>
+                <FormControl type="address" placeholder="Address" />
+              </InputGroup>
             </FormGroup>
             <FormGroup>
-              <Label>Own an Aircraft ?</Label>
+              <InputGroup type="text" name="owner" id="owner" placeholder="Own an Aircraft?">
+                <InputGroup.Addon>Own an Aircraft?</InputGroup.Addon>
+                <FormControl type="boolean" placeholder="Own an Aircraft?" />
+              </InputGroup>
             </FormGroup>
           </Form>
         </div>;

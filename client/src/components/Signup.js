@@ -1,74 +1,60 @@
 import React, { Component } from "react";
+import { Button, Form, FormGroup,FormControl, InputGroup, Modal } from "react-bootstrap";
+
 
 class Signup extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-
-    };
+    this.state = { showModal: false };
+    this.open = this.open.bind(this);
+    this.close = this.close.bind(this);
   }
 
+  open = () => {
+    this.setState({ showModal: true });
+  };
+
+  close = () => {
+    this.setState({ showModal: false });
+  };
+
   render() {
-    return <div className="container">
-        <div className="panel">
-          <div className="panel-header">
-            <h1>Sign Up</h1>
-          </div>
-          <div className="panel-body">
-            <div className="row">
-              <div className="col col-lg-12">
-                <div>
-                  <h1>Welcome Aboard</h1>
-                  <span>Already have an account?</span>
-                  <a href="">Sign in</a>
-                </div>
-                <div >
-                  <div>
-                    <button className="btn button-blue" href="/signup/auth/facebook">
-                      <span>Join With FaceBook</span>
-                    </button>
-                  </div>
-                  </div>
-                  <div>
-                    <button className="btn button-blue" href="/signup/auth/google">
-                      <span>Join With google</span>
-                    </button>
-                  </div>
-                </div>
-                <div className="col col-lg-12">
-                  <div>
-                    <div className="divider ">
-                      <div>or</div>
-                    </div>
-                  </div>
-                </div>
-                <form action="/signup" className="col col-lg-12">
-                  <div className="grid">
-                    <div className="grid-cell">
-                      <input type="text" className="inputText" placeholder="First Name" name="firstName" />
-                    </div>
-                    <div className="grid-cell">
-                      <input type="text" className="inputText" placeholder="Last Name" name="lastName" />
-                    </div>
-                    <div className="grid-cell">
-                      <input type="email" className="inputText" placeholder="Email" name="email" />
-                    </div>
-                    <div className="grid-cell">
-                      <input type="password" className="inputText" placeholder="Password" name="password" />
-                    </div>
-                  </div>
-                  <p>
-                    <span>By joinging you agree to the</span>
-                    <a href="" />
-                  </p>
-                  <button className="btn btn-success" typ="submit">
-                    Join Now
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>;
+    return (
+      <div>
+        <div onClick={this.open}>Sign Up</div>
+        <Modal show={this.state.showModal} onHide={this.close}>
+          <Modal.Header closeButton>
+            <Modal.Title>Modal heading</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <h4>Text in a modal</h4>
+            <p>
+              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+            </p>
+
+            <h4>Popover in a modal</h4>
+
+            <hr />
+          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={this.close}>Close</Button>
+          </Modal.Footer>
+        </Modal>
+      </div>
+    );
+
+    // <div>
+    //     <label>Name</label>
+    //     <input type="text" ref="name" defaultValue="{this.props.fieldValues.name}" />
+
+    //     <label>Password</label>
+    //     <input type="password" ref="password" defaultValue="{this.props.fieldValues.password}" />
+
+    //     <label>Email</label>
+    //     <input type="email" ref="email" defaultValue="{this.props.fieldValues.email}" />
+
+    //     <button onClick="">Join Now</button>
+    //   </div>;
   }
 }
 
