@@ -14,7 +14,7 @@ class Appbar extends Component {
 
   constructor() {
     super();
-    this.state = { showModal: false };
+    this.state = { showModal: false, firstName: "", lastName: "", email: "", password: "", passwordConf: "", userCreated: Date };
 
   }
   

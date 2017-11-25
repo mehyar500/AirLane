@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { Button, Form, FormGroup,FormControl, InputGroup, Modal } from "react-bootstrap";
-
+import { Button, FormGroup,FormControl, InputGroup, Modal } from "react-bootstrap";
 
 class Signup extends Component {
   constructor(props) {
     super(props);
-    this.state = { showModal: false };
+    this.state = {
+       showModal: false
+    };
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
   }
@@ -19,42 +20,45 @@ class Signup extends Component {
   };
 
   render() {
-    return (
-      <div>
+    return <div>
         <div onClick={this.open}>Sign Up</div>
         <Modal show={this.state.showModal} onHide={this.close}>
           <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
+            <Modal.Title>Registeration</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h4>Text in a modal</h4>
-            <p>
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-            </p>
-
-            <h4>Popover in a modal</h4>
-
-            <hr />
+            <div>
+              <form action="">
+                <FormGroup>
+                  <FormControl Name="firstName" type="text" placeholder="First Name! ex: Michael" />
+                </FormGroup>
+                <FormGroup>
+                  <FormControl Name="lastName" type="text" placeholder="Last Name! ex: Smith" />
+                </FormGroup>
+                <FormGroup>
+                  <FormControl Name="email" type="email" placeholder="Email! ex: johnSmith@email.com" />
+                </FormGroup>
+                <FormGroup>
+                  <FormControl Name="password" type="password" placeholder="New Password!" />
+                </FormGroup>
+                <FormGroup>
+                  <FormControl Name="passwordconf" type="password" placeholder="confirm new password" />
+                </FormGroup>
+                <FormGroup>
+                  <Button type="submit">Submit</Button>
+                </FormGroup>
+              </form>
+              <div inline>
+                <Button >Facebook</Button>
+                <Button >Google</Button>
+              </div>
+            </div>
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.close}>Close</Button>
           </Modal.Footer>
         </Modal>
-      </div>
-    );
-
-    // <div>
-    //     <label>Name</label>
-    //     <input type="text" ref="name" defaultValue="{this.props.fieldValues.name}" />
-
-    //     <label>Password</label>
-    //     <input type="password" ref="password" defaultValue="{this.props.fieldValues.password}" />
-
-    //     <label>Email</label>
-    //     <input type="email" ref="email" defaultValue="{this.props.fieldValues.email}" />
-
-    //     <button onClick="">Join Now</button>
-    //   </div>;
+      </div>;
   }
 }
 
