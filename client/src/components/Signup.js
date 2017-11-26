@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, FormGroup,FormControl, InputGroup, Modal } from "react-bootstrap";
+import { bsStyle, Button, FormGroup,FormControl, InputGroup, Modal } from "react-bootstrap";
 
 class Signup extends Component {
   constructor(props) {
@@ -45,12 +45,14 @@ class Signup extends Component {
                   <FormControl Name="passwordconf" type="password" placeholder="confirm new password" />
                 </FormGroup>
                 <FormGroup>
-                  <Button type="submit">Submit</Button>
+                  <Button bsStyle="primary">Submit</Button>
                 </FormGroup>
               </form>
+              <div> OR </div>
+              <div> <h3> Sign in with </h3></div>
               <div inline>
-                <Button >Facebook</Button>
-                <Button >Google</Button>
+                <Button bsStyle="primary">Facebook</Button>
+                <Button bsStyle="danger">Google</Button>
               </div>
             </div>
           </Modal.Body>
