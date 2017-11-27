@@ -4,20 +4,17 @@ import {
   Nav,
   NavItem,
   NavDropdown,
-  MenuItem,
-  Button,
-  Modal
+  MenuItem
 } from "react-bootstrap";
 import Signup from "./Signup";
 
 class Appbar extends Component {
 
-  constructor() {
-    super();
-    this.state = { showModal: false, firstName: "", lastName: "", email: "", password: "", passwordConf: "", userCreated: Date };
+  constructor(props) {
+    super(props);
+    this.state = { showModal: false};
 
   }
-  
 
   render() {
     return <Navbar>
@@ -28,13 +25,15 @@ class Appbar extends Component {
         </Navbar.Header>
         <Nav>
           <NavItem>
-            <Signup>Sign Up/Log In</Signup>
+            <Signup/>
           </NavItem>
-          <NavDropdown>
+          <NavItem>
+            Login
+          </NavItem>
+          <NavDropdown title="Menu" id="navdropdown">
             <MenuItem href="/profile">Profile</MenuItem>
             <MenuItem>Prefrences</MenuItem>
             <MenuItem>List You're Airplane Now</MenuItem>
-            <MenuItem divider />
             <MenuItem>Log Out</MenuItem>
           </NavDropdown>
         </Nav>

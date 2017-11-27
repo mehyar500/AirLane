@@ -21,6 +21,20 @@ app.use(bodyParser.json());
 //set up cookies for sessions
 app.use(cookieParser());
 
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+
+// Add routes, both API and view
+app.use(routes);
+
+// Set up promises with mongoose
+mongoose.Promise = global.Promise;
+
+// Connect to the Mongo DB
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/airlane", {useMongoClient: true});
+
 //initialize passport and express-session
 app.use(session({
     secret: 'holla hoops', //random key
@@ -31,18 +45,62 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
-// Add routes, both API and view
-app.use(routes);
 
-// Set up promises with mongoose
-mongoose.Promise = global.Promise;
+//setting passport for log in, log out and signup
+passport.serializeUser((user, done) => {
+  done(null, user);
+});
 
-// Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/airlane", {useMongoClient: true});
+passport.deserializeUser((user, done) => {
+  db.User.findOne({ _id: user.userID }).then((user, error) => {
+    if (error) {
+      done(error);
+    }
+
+    done(null, user);
+  });
+});
+
+passport.use(
+  new LocalStrategy(
+    {
+      usernameField: "email" //change default username to email
+    },
+    (email, password, done) => {
+      console.log(email);
+      console.log(password);
+      // return done(null, "LOGIN SUCCESSFUL!");
+
+      db.User.findOne({ email }).then((user, error) => {
+        if (error) {
+          done(error);
+        }
+
+        const hashPass = user.password;
+
+        console.log("Hash: " + hashPass);
+
+        if (hashPass.length === 0) {
+          //essentially, if no user info is returned
+          done(null, false);
+        } else {
+          //... else, run the bycrypt compare method to authenticate
+
+          //bcrypt de-hash
+          bcrypt.compare(password, hashPass, (err, response) => {
+            if (response === true) {
+              console.log("Successful login!");
+              return done(null, { userID: user._id });
+            } else {
+              console.log("Unsuccessful login!");
+              return done(null, false);
+            }
+          });
+        }
+      });
+    }
+  )
+);
 
 // Send every request to the React app
 // Define any API routes before this runs
