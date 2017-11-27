@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import {
   Button,
   FormGroup,
@@ -7,6 +8,7 @@ import {
   Modal
 } from "react-bootstrap";
 import Routes from "../Utils/Routes";
+
 
 class Signup extends Component {
   constructor(props) {
@@ -85,6 +87,7 @@ class Signup extends Component {
                   <FormControl name="password" type="password" placeholder="New Password!" onChange={this.handleChange} />
                 </FormGroup>
                 <FormGroup>
+
                   <ControlLabel htmlFor="passwordconf">
                     Confrim Password
                   </ControlLabel>
@@ -94,6 +97,12 @@ class Signup extends Component {
                   Submit
                 </Button>
               </form>
+              <div> OR </div>
+              <div> <h3> Sign in with </h3></div>
+              <div inline>
+                <Button bsStyle="primary">Facebook</Button>
+                <Button bsStyle="danger">Google</Button>
+              </div>
             </div>
           </Modal.Body>
           <Modal.Footer>
