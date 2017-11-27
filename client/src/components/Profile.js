@@ -46,6 +46,9 @@ class Profile extends Component {
                 <FormControl type="boolean" placeholder="Own an Aircraft?" />
               </InputGroup>
             </FormGroup>
+            <FormGroup>
+              <Button>Save</Button>
+            </FormGroup>
           </Form>
         </div>;
   }
