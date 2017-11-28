@@ -7,6 +7,7 @@ import {
   MenuItem
 } from "react-bootstrap";
 import Signup from "./Signup";
+import Login from "./Login";
 
 class Appbar extends Component {
 
@@ -28,7 +29,7 @@ class Appbar extends Component {
             <Signup/>
           </NavItem>
           <NavItem>
-            Login
+            <Login/>
           </NavItem>
           <NavDropdown title="Menu" id="navdropdown">
             <MenuItem href="/profile">Profile</MenuItem>

@@ -8,9 +8,9 @@ import {
   Modal
 } from "react-bootstrap";
 
-const wellStyles = { maxWidth: 400, margin: '0 auto 10px' };
 
-class Signup extends Component {
+
+class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -51,24 +51,14 @@ class Signup extends Component {
 
   render() {
     return <div>
-        <div onClick={this.open}>Sign Up</div>
+        <div onClick={this.open}>Log In</div>
         <Modal show={this.state.showModal} onHide={this.close}>
           <Modal.Header closeButton>
-            <Modal.Title>Registeration</Modal.Title>
+            <Modal.Title>Log In</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <div>
-              <form action="/signup">
-                <FormGroup>
-                  <ControlLabel htmlFor="firstName">
-                    First Name
-                  </ControlLabel>
-                  <FormControl name="firstName" type="text" placeholder="ex: Michael" onChange={this.handleChange} />
-                </FormGroup>
-                <FormGroup>
-                  <ControlLabel htmlFor="lastName">Last Name</ControlLabel>
-                  <FormControl name="lastName" type="text" placeholder="ex: Smith" onChange={this.handleChange} />
-                </FormGroup>
+           <div>
+              <form action="/login">
                 <FormGroup>
                   <ControlLabel htmlFor="email">Eamil</ControlLabel>
                   <FormControl name="email" type="email" placeholder="ex: johnSmith@email.com" onChange={this.handleChange} />
@@ -76,26 +66,27 @@ class Signup extends Component {
                 <FormGroup>
                   <ControlLabel htmlFor="password">Password</ControlLabel>
                   <FormControl name="password" type="password" placeholder="New Password!" onChange={this.handleChange} />
-                </FormGroup>
-                <FormGroup>
-
-                  <ControlLabel htmlFor="passwordconf">
-                    Confrim Password
-                  </ControlLabel>
-                  <FormControl name="passwordConf" type="password" placeholder="confirm new password" onChange={this.handleChange} />
-                </FormGroup>
-                <Button bsStyle="primary" type="submit" value="submit" onClick={this.handleSubmit}>
-                  Submit
+                </FormGroup>                
+                <Button type="submit" value="submit" onClick={this.handleSubmit}>
+                  Log In
                 </Button>
               </form>
-              <div className="well" style={wellStyles}>
-              <h5>OR</h5>
-              </div>
+              <div> OR </div>
               <div> <h3> Sign in with </h3></div>
-              <div className="well" style={wellStyles}>
-               <Button bsStyle="primary" bsSize="large" block>Facebook</Button>
-               <Button bsStyle="danger" bsSize="large" block>Google</Button>
-              </div>
+              <div className="row mg-btm">
+              <div class="col-md-12">
+                 <a href="#" class="btn btn-primary btn-block">
+                   <i className="icon-facebook"></i>    Login with Facebook
+                 </a>
+             </div>
+             </div>
+             <div className="row">
+			<div class="col-md-12">
+                <a href="#" class="btn btn-danger btn-block" >
+                  <i className="icon-google"></i>    Login with google
+                </a>
+            </div>
+          </div>
             </div>
           </Modal.Body>
           <Modal.Footer>
@@ -106,4 +97,4 @@ class Signup extends Component {
   }
 }
 
-export default Signup;
+export default Login;
