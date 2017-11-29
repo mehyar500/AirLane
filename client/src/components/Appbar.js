@@ -11,6 +11,7 @@ import Search from "./Search";
 import Signup from "./Signup";
 import Login from "./Login";
 
+
 class Appbar extends Component {
 
   constructor(props) {
@@ -23,7 +24,7 @@ class Appbar extends Component {
     return <Navbar>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href="/">Airlane</a>
+            <a className="title" href="/"/>
           </Navbar.Brand>
         </Navbar.Header>
         <Nav>

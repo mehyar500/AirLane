@@ -4,6 +4,7 @@ import Appbar from "./components/Appbar";
 import Appbody from "./components/Appbody";
 import Profile from "./components/Profile";
 import Search from "./components/Search";
+import "./App.css";
 
 class App extends Component {
   render() {
