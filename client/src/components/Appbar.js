@@ -18,13 +18,14 @@ class Appbar extends Component {
   }
 
   render() {
-    return <Navbar>
+    return (
+      <Navbar>
         <Navbar.Header>
           <Navbar.Brand>
             <a href="/">airLane</a>
           </Navbar.Brand>
         </Navbar.Header>
-        <Nav>
+        <Nav pullRight>
           <NavItem>
             <Signup/>
           </NavItem>
@@ -38,7 +39,8 @@ class Appbar extends Component {
             <MenuItem>Log Out</MenuItem>
           </NavDropdown>
         </Nav>
-      </Navbar>;
+      </Navbar>
+    );
   }
 }
 
