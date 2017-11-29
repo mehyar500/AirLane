@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import API from "../Utils/API";
 import {
   Button,
   FormGroup,
@@ -19,8 +19,7 @@ class Signup extends Component {
       lastName: "",
       email: "",
       password: "",
-      passwordConf: "",
-      userCreated: Date
+      passwordConf: ""
     };
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
@@ -36,7 +35,7 @@ class Signup extends Component {
 
   // Handles updating component state when the user types into the input field
   handleChange = event => {
-    console.log(event.target.value);
+    // console.log(event.target.value);
     const { name, value } = event.target;
     this.setState({
       [name]: value
@@ -46,7 +45,8 @@ class Signup extends Component {
   //when the form is submitted, use the API to save a user
   handleSubmit = event => {
     event.preventDefault();
-   
+   const {firstName, lastName, password} = this.state;
+   API.saveUser(firstName, lastName, password).then(console.log(firstName, lastName, password)).catch(err => console.log("Signup.js API call " + err))
   };
 
   render() {
