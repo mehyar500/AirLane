@@ -8,7 +8,7 @@ import {
   Modal
 } from "react-bootstrap";
 
-const wellStyles = { maxWidth: 400, margin: '0 auto 10px' };
+const wellStyles = { maxWidth: 400, margin: '30px auto 10px' };
 
 class Login extends Component {
   constructor(props) {
@@ -67,20 +67,26 @@ class Login extends Component {
                   <ControlLabel htmlFor="password">Password</ControlLabel>
                   <FormControl name="password" type="password" placeholder="New Password!" onChange={this.handleChange} />
                 </FormGroup>                
-                <Button type="submit" value="submit" onClick={this.handleSubmit}>
+                <Button type="submit" bsStyle="primary" value="submit" onClick={this.handleSubmit}>
                   Log In
                 </Button>
               </form>
-              <div>
+              <div className="row">
+              <div className="col-md-12">
+              <hr></hr>
+              </div>
+              </div>
+              <div className="row">
+              <div className="col-md-12">
               <h5 className="text-center">OR</h5>
               </div>
-              <div>
-              <div></div>  
+              </div>
+              <div className="row">
+              <div className="col-md-12">
               <h3 className="text-center"> Sign in with </h3>
               </div>
-              <div></div>
-              <div></div>
-              <div></div>                                              
+              </div>
+              <div className="row"></div>                                         
               <div className="well" style={wellStyles}>
                <Button bsStyle="primary" bsSize="large" block>Facebook</Button>
                <Button bsStyle="danger" bsSize="large" block>Google</Button>
