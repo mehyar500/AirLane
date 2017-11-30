@@ -15,6 +15,7 @@ const userSchema = new Schema({
   },
   email: {
     type: String,
+    required: "Email is required",
     unique: true,
     trim: true,
     match: [/.+\@.+\..+/, "Please enter a valid e-mail address"]
@@ -32,6 +33,6 @@ const userSchema = new Schema({
   }
 });
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model("Userdb", userSchema);
 
 module.exports = User;
