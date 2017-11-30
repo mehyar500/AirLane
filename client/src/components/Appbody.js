@@ -24,11 +24,7 @@ class Appbody extends Component {
               <Form inline>
                 <FormGroup>
                   <InputGroup>
-                    <InputGroup.Addon>Location</InputGroup.Addon>
-                    <FormControl type="text" placeholder="Fort Lauderdale, FL" />
-                  </InputGroup>
-                  <InputGroup>
-                    <FormControl placeholder="Pilot?" name="pilot" />
+                    <FormControl type="text" placeholder="Location" name="location" />
                   </InputGroup>
                   <InputGroup>
                     <FormControl placeholder="How Many" name="howMany" />
@@ -36,7 +32,8 @@ class Appbody extends Component {
                   <InputGroup>
                     <FormControl placeholder="Trip Date" name="date" />
                   </InputGroup>
-                  <Button type="submit">
+                  {"  "}
+                  <Button className="btn-primary" type="submit">
                     Search
                   </Button>
                 </FormGroup>

@@ -1,5 +1,5 @@
 body{
   background-image: url("gulfstream2.png");
   background-repeat: no-repeat;
-  background-color: black;
+  background-attachment: fixed;
 }
