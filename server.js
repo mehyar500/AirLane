@@ -8,7 +8,7 @@ const LocalStrategy = require("passport-local").Strategy;
 const PORT = process.env.PORT || 3001;
 const routes = require("./routes");
 const app = express();
-const db = require("./models/users");
+const Userdb = require("./models/users");
 //authentication packages
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
@@ -25,7 +25,6 @@ app.use(bodyParser.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
-
 
 // Set up promises with mongoose
 mongoose.Promise = global.Promise;
@@ -44,6 +43,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Add routes, both API and view
+app.use(routes);
 
 //setting passport for log in, log out and signup
 passport.serializeUser((user, done) => {
@@ -51,7 +52,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((user, done) => {
-  db.findOne({ _id: user.userID }).then((user, error) => {
+  Userdb.findOne({ _id: user.userID }).then((user, error) => {
     if (error) {
       done(error);
     }
@@ -69,22 +70,17 @@ passport.use(
       console.log(email);
       console.log(password);
       // return done(null, "LOGIN SUCCESSFUL!");
-
-      db.findOne({ email }).then((user, error) => {
+      Userdb.findOne({ email }).then((user, error) => {
         if (error) {
           done(error);
         }
-
         const hashPass = user.password;
-
         console.log("Hash: " + hashPass);
-
         if (hashPass.length === 0) {
           //essentially, if no user info is returned
           done(null, false);
         } else {
           //... else, run the bycrypt compare method to authenticate
-
           //bcrypt de-hash
           bcrypt.compare(password, hashPass, (err, response) => {
             if (response === true) {
@@ -101,8 +97,6 @@ passport.use(
   )
 );
 
-// Add routes, both API and view
-app.use(routes);
 
 // Send every request to the React app
 // Define any API routes before this runs
