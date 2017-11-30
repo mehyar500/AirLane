@@ -6,8 +6,6 @@ import {
   NavDropdown,
   MenuItem
 } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
-import Search from "./Search";
 import Signup from "./Signup";
 import Login from "./Login";
 
@@ -21,19 +19,13 @@ class Appbar extends Component {
   }
 
   render() {
-    return <Navbar>
+    return (
+      <Navbar>
         <Navbar.Header>
           <Navbar.Brand>
-            <a className="title" href="/"/>
+            <a href="/">airLane</a>
           </Navbar.Brand>
         </Navbar.Header>
-        <Nav>
-          <NavItem>
-            <NavLink to="/search">
-              Search
-            </NavLink>
-          </NavItem>
-        </Nav>
         <Nav pullRight>
           <NavItem>
             <Signup/>
@@ -48,7 +40,8 @@ class Appbar extends Component {
             <MenuItem>Log Out</MenuItem>
           </NavDropdown>
         </Nav>
-      </Navbar>;
+      </Navbar>
+    );
   }
 }
 

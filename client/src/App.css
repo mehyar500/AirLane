@@ -1,5 +1,7 @@
 body{
-  color: red;
-  background-image: url("Gulfstream_G4505.jpg");
-  height: 1000px;
+	font-family: 'Cinzel', serif;
+	background-image: url("gulfstream2.png");
+	background-repeat: no-repeat;
+	background-color: black;
+
 }

@@ -8,32 +8,31 @@ const LocalStrategy = require("passport-local").Strategy;
 const PORT = process.env.PORT || 3001;
 const routes = require("./routes");
 const app = express();
-const User = require("./models/users");
+const db = require("./models/users");
 //authentication packages
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const bcrypt = require('bcrypt');
 
+//set up cookies for sessions
+app.use(cookieParser());
+
 // Configure body parser for AJAX requests
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
-//set up cookies for sessions
-app.use(cookieParser());
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-// Add routes, both API and view
-app.use(routes);
 
 // Set up promises with mongoose
 mongoose.Promise = global.Promise;
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/airlane", {useMongoClient: true});
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/airlane";
+mongoose.connect(MONGODB_URI, { useMongoClient: true });
 
 //initialize passport and express-session
 app.use(session({
@@ -52,7 +51,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((user, done) => {
-  db.User.findOne({ _id: user.userID }).then((user, error) => {
+  db.findOne({ _id: user.userID }).then((user, error) => {
     if (error) {
       done(error);
     }
@@ -71,7 +70,7 @@ passport.use(
       console.log(password);
       // return done(null, "LOGIN SUCCESSFUL!");
 
-      db.User.findOne({ email }).then((user, error) => {
+      db.findOne({ email }).then((user, error) => {
         if (error) {
           done(error);
         }
@@ -101,6 +100,9 @@ passport.use(
     }
   )
 );
+
+// Add routes, both API and view
+app.use(routes);
 
 // Send every request to the React app
 // Define any API routes before this runs

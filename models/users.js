@@ -29,14 +29,6 @@ const userSchema = new Schema({
       },
       "Password should be longer."
     ]
-  },
-  passwordConf: {
-    type: String,
-    required: true
-  },
-  userCreated: {
-    type: Date,
-    default: Date.now
   }
 });
 
