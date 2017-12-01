@@ -8,7 +8,7 @@ import {
   Modal
 } from "react-bootstrap";
 
-const wellStyles = { maxWidth: 400, margin: '0 auto 10px' };
+const wellStyles = { maxWidth: 400, margin: '30px auto 10px' };
 
 class Signup extends Component {
   constructor(props) {
@@ -45,29 +45,8 @@ class Signup extends Component {
   //when the form is submitted, use the API to save a user
   handleSubmit = event => {
     event.preventDefault();
-    const {firstName, lastName,email, password} = this.state;
-    return API.saveUser({ firstName, lastName, email, password })
-      .then(res => {
-        console.log(res);
-      })
-      .catch(function(error) {
-        if (error.response) {
-          // The request was made and the server responded with a status code
-          // that falls out of the range of 2xx
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        } else if (error.request) {
-          // The request was made but no response was received
-          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-          // http.ClientRequest in node.js
-          console.log(error.request);
-        } else {
-          // Something happened in setting up the request that triggered an Error
-          console.log("Error", error.message);
-        }
-        console.log(error.config);
-      });
+   const {firstName, lastName, password} = this.state;
+   API.saveUser(firstName, lastName, password).then(console.log(firstName, lastName, password)).catch(err => console.log("Signup.js API call " + err))
   };
 
   render() {
@@ -109,14 +88,6 @@ class Signup extends Component {
                   Submit
                 </Button>
               </form>
-              <div className="well" style={wellStyles}>
-              <h5>OR</h5>
-              </div>
-              <div> <h3> Sign in with </h3></div>
-              <div className="well" style={wellStyles}>
-               <Button bsStyle="primary" bsSize="large" block>Facebook</Button>
-               <Button bsStyle="danger" bsSize="large" block>Google</Button>
-              </div>
             </div>
           </Modal.Body>
           <Modal.Footer>
@@ -128,3 +99,8 @@ class Signup extends Component {
 }
 
 export default Signup;
+
+function newFunction() {
+  const wellStyles = { maxWidth: 400, margin: '0 auto 10px' };
+  return wellStyles;
+}

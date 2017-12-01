@@ -6,24 +6,27 @@ import {
   InputGroup,
   Button
 } from "react-bootstrap";
+import Results from "./Results";
+import "./Appbody.css";
 
 
 class Appbody extends Component {
 
-    render () {
-        return (<div className="container">
-            <div>
-              <h1>Rent a plane anywhere in the world</h1>
-              <h4>Save money, meet awesome people, and consume less</h4>
-            </div>
+  render () {
+    return (
+      <div>
+      <div className="container one">
+        <div className="row">
+          <div>
+            <h1>Rent a plane anywhere in the world</h1>
+            <h4>Save money, meet awesome people, and worry less</h4>
+          </div>
+        </div>
+        <div className="row">
             <Form inline>
               <FormGroup>
                 <InputGroup>
-                  <InputGroup.Addon>Location</InputGroup.Addon>
-                  <FormControl type="text" placeholder="Fort Lauderdale, FL" />
-                </InputGroup>
-                <InputGroup>
-                  <FormControl placeholder="Pilot?" name="pilot" />
+                  <FormControl type="text" placeholder="Location" name="location" />
                 </InputGroup>
                 <InputGroup>
                   <FormControl placeholder="How Many" name="howMany" />
@@ -31,13 +34,20 @@ class Appbody extends Component {
                 <InputGroup>
                   <FormControl placeholder="Trip Date" name="date" />
                 </InputGroup>
-                <Button type="submit">
+                {"  "}
+                <Button className="btn-primary" type="submit">
                   Search
                 </Button>
               </FormGroup>
             </Form>
-    </div>);
-    }
+        </div>
+      </div>
+      <div className="container one">
+        <Results />
+      </div>
+    </div>
+    );
+  }
 }
 
 export default Appbody;

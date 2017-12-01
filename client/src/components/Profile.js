@@ -8,49 +8,18 @@ class Profile extends Component {
   }
 
   render() {
-      return <div className="container">
-          <Form>
-            <FormGroup row>
-              <InputGroup type="text" name="firstName" id="firstName" placeholder="First Name">
-                <InputGroup.Addon>First Name</InputGroup.Addon>
-                <FormControl type="text" placeholder="First Name" />
-              </InputGroup>
-            </FormGroup>
-            <FormGroup>
-              <InputGroup type="text" name="lastName" id="lastName" placeholder="Last Name">
-                <InputGroup.Addon>Last Name</InputGroup.Addon>
-                <FormControl type="text" placeholder="Last Name" />
-              </InputGroup>
-            </FormGroup>
-            <FormGroup>
-              <InputGroup type="email" name="email" id="email" placeholder="Email">
-                <InputGroup.Addon>Email</InputGroup.Addon>
-                <FormControl type="email" placeholder="Email" />
-              </InputGroup>
-            </FormGroup>
-            <FormGroup>
-              <InputGroup type="number" name="phone" id="phone" placeholder="Phone Number">
-                <InputGroup.Addon>Phone Number</InputGroup.Addon>
-                <FormControl type="number" placeholder="Phone Number" />
-              </InputGroup>
-            </FormGroup>
-            <FormGroup>
-              <InputGroup type="address" name="address" id="address" placeholder="Address">
-                <InputGroup.Addon>Address</InputGroup.Addon>
-                <FormControl type="address" placeholder="Address" />
-              </InputGroup>
-            </FormGroup>
-            <FormGroup>
-              <InputGroup type="text" name="owner" id="owner" placeholder="Own an Aircraft?">
-                <InputGroup.Addon>Own an Aircraft?</InputGroup.Addon>
-                <FormControl type="boolean" placeholder="Own an Aircraft?" />
-              </InputGroup>
-            </FormGroup>
-            <FormGroup>
-              <Button>Save</Button>
-            </FormGroup>
-          </Form>
-        </div>;
+      return (
+        <div className="container one">
+          <div className="row">
+            <div className="col-md-3"></div>
+            <div className="col-md-6">
+              <h1>Your Name Here</h1>
+              <div className="account">Account info here</div>
+            </div>
+            <div className="col-md-3"></div>
+          </div>
+        </div>
+      );
   }
 
 }
