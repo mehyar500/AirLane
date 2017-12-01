@@ -8,7 +8,7 @@ import {
   Modal
 } from "react-bootstrap";
 
-
+const wellStyles = { maxWidth: 400, margin: '30px auto 10px' };
 
 class Login extends Component {
   constructor(props) {
@@ -67,26 +67,30 @@ class Login extends Component {
                   <ControlLabel htmlFor="password">Password</ControlLabel>
                   <FormControl name="password" type="password" placeholder="New Password!" onChange={this.handleChange} />
                 </FormGroup>                
-                <Button type="submit" value="submit" onClick={this.handleSubmit}>
+                <Button type="submit" bsStyle="primary" value="submit" onClick={this.handleSubmit}>
                   Log In
                 </Button>
               </form>
-              <div> OR </div>
-              <div> <h3> Sign in with </h3></div>
-              <div className="row mg-btm">
-              <div class="col-md-12">
-                 <a href="" class="btn btn-primary btn-block">
-                   <i className="icon-facebook"></i>    Login with Facebook
-                 </a>
-             </div>
-             </div>
-             <div className="row">
-			<div class="col-md-12">
-                <a href="" class="btn btn-danger btn-block" >
-                  <i className="icon-google"></i>    Login with google
-                </a>
-            </div>
-          </div>
+              <div className="row">
+              <div className="col-md-12">
+              <hr></hr>
+              </div>
+              </div>
+              <div className="row">
+              <div className="col-md-12">
+              <h5 className="text-center">OR</h5>
+              </div>
+              </div>
+              <div className="row">
+              <div className="col-md-12">
+              <h3 className="text-center"> Sign in with </h3>
+              </div>
+              </div>
+              <div className="row"></div>                                         
+              <div className="well" style={wellStyles}>
+               <Button bsStyle="primary" bsSize="large" block>Facebook</Button>
+               <Button bsStyle="danger" bsSize="large" block>Google</Button>
+              </div>
             </div>
           </Modal.Body>
           <Modal.Footer>

@@ -11,6 +11,7 @@ class Profile extends Component {
       return <div className="container">
           <Form>
             <FormGroup row>
+              <p>Profile</p>
               <InputGroup type="text" name="firstName" id="firstName" placeholder="First Name">
                 <InputGroup.Addon>First Name</InputGroup.Addon>
                 <FormControl type="text" placeholder="First Name" />
