@@ -60,31 +60,26 @@ class Login extends Component {
            <div>
               <form action="/login">
                 <FormGroup>
-                  <ControlLabel htmlFor="email">Eamil</ControlLabel>
+                  <ControlLabel htmlFor="email">Email</ControlLabel>
                   <FormControl name="email" type="email" placeholder="ex: johnSmith@email.com" onChange={this.handleChange} />
                 </FormGroup>
                 <FormGroup>
                   <ControlLabel htmlFor="password">Password</ControlLabel>
                   <FormControl name="password" type="password" placeholder="New Password!" onChange={this.handleChange} />
                 </FormGroup>                
-                <Button type="submit" bsStyle="primary" value="submit" onClick={this.handleSubmit}>
+                <Button className="btn-primary" type="submit" value="submit" onClick={this.handleSubmit}>
                   Log In
                 </Button>
               </form>
               <div className="row">
-              <div className="col-md-12">
-              <hr></hr>
-              </div>
-              </div>
-              <div className="row">
-              <div className="col-md-12">
-              <h5 className="text-center">OR</h5>
-              </div>
+                <div className="col-md-12">
+                  <hr></hr>
+                </div>
               </div>
               <div className="row">
-              <div className="col-md-12">
-              <h3 className="text-center"> Sign in with </h3>
-              </div>
+                <div className="col-md-12">
+                  <h3 className="text-center"> Sign in with </h3>
+                </div>
               </div>
               <div className="row"></div>                                         
               <div className="well" style={wellStyles}>
