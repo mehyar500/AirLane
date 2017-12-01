@@ -11,6 +11,15 @@ const saltRounds = 10;
 //API Routes
 router.use("/api", apiRoutes);
 
+//userauth
+router.get("/userauth", (req, res) => {
+  if (req.isAuthenticated()) { //if user is authenticated, send user info, otherwise send false
+    res.json(req.user)
+} else {
+    res.json({})
+}
+});
+
 // register new user
 router.post("/signup", (req, res) => {
   const { firstName, lastName, email, password } = req.body;
