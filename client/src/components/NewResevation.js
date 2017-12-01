@@ -9,15 +9,10 @@ import {
   Modal
 } from "react-bootstrap";
 
-class NewPlane extends Component {
+class NewResevation extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      showModal: false,
-      name: "",
-      type: "",
-      capacity: ""
-    };
+    this.state = { showModal: false, date: "", howMany: "", location: "", destination: "", price: "" };
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
   }
@@ -42,8 +37,8 @@ class NewPlane extends Component {
   //when the form is submitted, use the API to save a new plane
   handleSubmit = event => {
     event.preventDefault();
-    const { name, type, capacity } = this.state;
-    API.savePlane(name, type, capacity);
+    const { date, howMany, location, destination, price } = this.state;
+    API.savePlane(date, howMany, location, destination, price);
   };
 
   render() {
@@ -62,4 +57,4 @@ class NewPlane extends Component {
   }
 }
 
-export default NewPlane;
+export default NewResevation;
