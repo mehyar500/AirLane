@@ -16,5 +16,11 @@ export default {
   // Saves a user to the database
   saveUser: function(userData) {
     return axios.post("/signup", userData);
+  },
+  login: function(userData) {
+    return axios.get("/login", userData);
+  },
+  userAuth: function() {
+    return axios.get("/userauth");
   }
 };

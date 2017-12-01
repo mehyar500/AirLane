@@ -8,14 +8,25 @@ import {
 } from "react-bootstrap";
 import Signup from "./Signup";
 import Login from "./Login";
-
+import API from "../Utils/API";
 
 class Appbar extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = { showModal: false};
+  state = { showModal: false, showMenu: false};
 
+  handleOpenMenu = () => {
+    this.state.showMenu = true;
+  }
+  handleCloseMenu = () => {
+    this.state.showMenu = false;
+  }
+
+  componentDidMount() {
+    if (API.userAuth) {
+      this.handleOpenMenu
+    } else {
+      this.handleCloseMenu
+    }
   }
 
   render() {
@@ -35,18 +46,22 @@ class Appbar extends Component {
           </NavItem>
         </Nav>
         <Nav pullRight>
-          <NavItem>
-            <Signup/>
-          </NavItem>
-          <NavItem>
-            <Login/>
-          </NavItem>
-          <NavDropdown title="Menu" id="navdropdown">
+          
+          {this.state.showMenu ? (<NavDropdown showmenu={this.state.showMenu} title="Menu" id="navdropdown">
             <MenuItem href="/profile">Profile</MenuItem>
             <MenuItem>Prefrences</MenuItem>
             <MenuItem>List You're Airplane Now</MenuItem>
             <MenuItem>Log Out</MenuItem>
-          </NavDropdown>
+          </NavDropdown>) : (
+            <Nav>
+              <NavItem>
+                <Login/>
+              </NavItem>
+              <NavItem>
+            <Signup/>
+          </NavItem>
+            </Nav>
+          )}
         </Nav>
       </Navbar>
     );

@@ -11,6 +11,15 @@ const saltRounds = 10;
 //API Routes
 router.use("/api", apiRoutes);
 
+//userauth
+router.get("/userauth", (req, res) => {
+  if (req.isAuthenticated()) { //if user is authenticated, send user info, otherwise send false
+    res.json(req.user)
+} else {
+    res.json({})
+}
+});
+
 // register new user
 router.post("/signup", (req, res) => {
   const { firstName, lastName, email, password } = req.body;
@@ -47,7 +56,7 @@ router.post("/login", passport.authenticate('local', {
     successRedirect: "/profile", //if login was successful, redirect to profile page
     failureRedirect: "/" //if login unseccussful, redirect to homepage
 
-}), );
+}) );
 //matches /logout
 router.post("/logout", (req, res) => {
   console.log(`Logging out user:`);
