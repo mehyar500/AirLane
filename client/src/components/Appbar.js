@@ -49,8 +49,7 @@ class Appbar extends Component {
           
           {this.state.showMenu ? (<NavDropdown showmenu={this.state.showMenu} title="Menu" id="navdropdown">
             <MenuItem href="/profile">Profile</MenuItem>
-            <MenuItem>Prefrences</MenuItem>
-            <MenuItem>List You're Airplane Now</MenuItem>
+            <MenuItem href="/newplane">List You're Airplane Now</MenuItem>
             <MenuItem>Log Out</MenuItem>
           </NavDropdown>) : (
             <Nav>

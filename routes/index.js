@@ -42,7 +42,7 @@ router.post("/signup", (req, res) => {
             })
             .catch(err => console.log(err));
       })
-      .catch((err) => {
+      .catch((err) => { 
           // If an error occurred, send it to the client
           console.log(err);
           res.redirect("/");
