@@ -60,18 +60,28 @@ class Login extends Component {
            <div>
               <form action="/login">
                 <FormGroup>
-                  <ControlLabel htmlFor="email">Eamil</ControlLabel>
+                  <ControlLabel htmlFor="email">Email</ControlLabel>
                   <FormControl name="email" type="email" placeholder="ex: johnSmith@email.com" onChange={this.handleChange} />
                 </FormGroup>
                 <FormGroup>
                   <ControlLabel htmlFor="password">Password</ControlLabel>
                   <FormControl name="password" type="password" placeholder="New Password!" onChange={this.handleChange} />
                 </FormGroup>                
-                <Button type="submit" value="submit" onClick={this.handleSubmit}>
+                <Button className="btn-primary" type="submit" value="submit" onClick={this.handleSubmit}>
                   Log In
                 </Button>
               </form>
-              <div> OR </div>
+
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-3"></div>
+                  <div className="col-md-6">
+                    OR 
+                  </div>
+                  <div className="col-md-3"></div>
+                </div>
+              </div>
+
               <div> <h3> Sign in with </h3></div>
               <div className="row mg-btm">
               <div class="col-md-12">
