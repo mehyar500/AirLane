@@ -2,14 +2,11 @@ import React, {Component} from "react";
 import { GoogleMap, Marker } from "react-google-maps";
 
 export default class Map extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            center: {lat: null, lng: null},
-            zoom: null
-        };
-    }
-
+    state = {
+        center: {lat: null, lng: null},
+        zoom: null
+    };
+        
     componentDidMount() {
         this.map = new google.maps.Map(this.refs.map, {
             center: { lat: -28.643387, lng: 153.612224 },
@@ -18,10 +15,7 @@ export default class Map extends Component {
     }
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> c329ddfd50b1b9f5f71adaca0a73c83767ca23c7
     render() {
     return <div ref="map" style={mapStyle} ref="map">
         map is here
