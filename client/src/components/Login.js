@@ -36,7 +36,7 @@ class Login extends Component {
 
   // Handles updating component state when the user types into the input field
   handleChange = event => {
-    console.log(event.target.value);
+    // console.log(event.target.value);
     const { name, value } = event.target;
     this.setState({
       [name]: value
