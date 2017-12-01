@@ -12,15 +12,15 @@ import "./Appbody.css";
 class Appbody extends Component {
 
     render () {
-        return (
-          <div className="container one">
-            <div className="row">
-              <div>
-                <h1>Rent a plane anywhere in the world</h1>
-                <h4>Save money, meet awesome people, and consume less</h4>
-              </div>
+      return (
+        <div className="container one">
+          <div className="row">
+            <div>
+              <h1>Rent a plane anywhere in the world</h1>
+              <h4>Save money, meet awesome people, and worry less</h4>
             </div>
-            <div className="row">
+          </div>
+          <div className="row">
               <Form inline>
                 <FormGroup>
                   <InputGroup>
@@ -38,9 +38,9 @@ class Appbody extends Component {
                   </Button>
                 </FormGroup>
               </Form>
-            </div>
           </div>
-        );
+        </div>
+      );
     }
 }
 

@@ -88,26 +88,6 @@ class Signup extends Component {
                   Submit
                 </Button>
               </form>
-              <div className="row">
-              <div className="col-md-12">
-              <hr></hr>
-              </div>
-              </div>
-              <div className="row">
-              <div className="col-md-12">
-              <h5 className="text-center">OR</h5>
-              </div>
-              </div>
-              <div className="row">
-              <div className="col-md-12">
-              <h3 className="text-center"> Sign in with </h3>
-              </div>
-              </div>
-              <div className="row"></div>                                         
-              <div className="well" style={wellStyles}>
-               <Button bsStyle="primary" bsSize="large" block>Facebook</Button>
-               <Button bsStyle="danger" bsSize="large" block>Google</Button>
-              </div>
             </div>
           </Modal.Body>
           <Modal.Footer>
