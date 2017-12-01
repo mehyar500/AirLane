@@ -1,32 +1,27 @@
 const apiRoutes = require("./api/index.js");
-const app = require("express").Router();
+const router = require("express").Router();
 const passport = require("passport");
-const db = require("../models/users");
+const Userdb = require("../models/users");
 const path = require("path");
 const bcrypt = require("bcrypt");
 const session = require("express-session");
 const authenticationMiddleware = require("../utils/authenticationMiddleware");
 const saltRounds = 10;
 
-// If no API routes are hit, send the React app
-app.use(function(req, res) {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
-});
-
 //API Routes
-app.use("/api", apiRoutes);
+router.use("/api", apiRoutes);
 
 // register new user
-app.post("/signup", (req, res) => {
-  const { firstName, lastName, email, password, userCreated } = req.body;
+router.post("/signup", (req, res) => {
+  const { firstName, lastName, email, password } = req.body;
   bcrypt.hash(password, saltRounds, (err, hash) => {
-    const newUser = { firstName, lastName, email, password: hash, userCreated };
-    db.create(newUser)
+    const newUser = { firstName, lastName, email, password: hash };
+    Userdb.create(newUser)
       .then((user) => {
         //console.log(user);
         console.log("This is the userID for new user:");
         console.log(user._id);
-          db.findOne({ _id: user._id })
+          Userdb.findOne({ _id: user._id })
             .then((signedInUser, error) => {
               if (error) throw (error);
               console.log("NEW USER CREATED: ");
@@ -47,14 +42,14 @@ app.post("/signup", (req, res) => {
 
 });
 //matches /login
-app.post("/login", passport.authenticate('local', {
+router.post("/login", passport.authenticate('local', {
 
     successRedirect: "/profile", //if login was successful, redirect to profile page
     failureRedirect: "/" //if login unseccussful, redirect to homepage
 
 }), );
 //matches /logout
-app.post("/logout", (req, res) => {
+router.post("/logout", (req, res) => {
   console.log(`Logging out user:`);
   console.log(req.user);
   req.session.destroy( (err) => {
@@ -64,11 +59,16 @@ app.post("/logout", (req, res) => {
 });
 
 // profile page. Only renders if authentication is verified, if not, redirect to root 
-app.get("/profile", authenticationMiddleware(), (req, res) => {
+router.get("/profile", authenticationMiddleware(), (req, res) => {
   //console log user info if any
   console.log(req.user);
   console.log(req.isAuthenticated());
   res.redirect("/")
 });
 
-module.exports = app;
+// If no API routes are hit, send the React app
+router.use(function(req, res) {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+});
+
+module.exports = router;

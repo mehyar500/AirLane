@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # AirLane
 
 This application will connect private jet owners with consumers looking to avoid the commerical airline hassle. The private jet owners will add their planes to the database, while the consumers will be able to search through our databases. When the consumer finds the flight they are looking for, they are able to book the flight.
@@ -57,3 +58,7 @@ yarn build
 3. Push to Heroku
 
 If all previous steps were followed correctly, your application should be deployed to Heroku!
+=======
+# airLane 
+## Rent a plane for any lane.
+>>>>>>> master

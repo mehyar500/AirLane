@@ -21,22 +21,23 @@ class Appbody extends Component {
             </div>
           </div>
           <div className="row">
-            <Form inline>
-              <FormGroup>
-                <InputGroup>
-                  <FormControl type="text" placeholder="Location" name="location" />
-                </InputGroup>
-                <InputGroup>
-                  <FormControl placeholder="How Many" name="howMany" />
-                </InputGroup>
-                <InputGroup>
-                  <FormControl placeholder="Trip Date" name="date" />
-                </InputGroup>
-                <Button className="btn-primary" type="submit">
-                  Search
-                </Button>
-              </FormGroup>
-            </Form>
+              <Form inline>
+                <FormGroup>
+                  <InputGroup>
+                    <FormControl type="text" placeholder="Location" name="location" />
+                  </InputGroup>
+                  <InputGroup>
+                    <FormControl placeholder="How Many" name="howMany" />
+                  </InputGroup>
+                  <InputGroup>
+                    <FormControl placeholder="Trip Date" name="date" />
+                  </InputGroup>
+                  {"  "}
+                  <Button className="btn-primary" type="submit">
+                    Search
+                  </Button>
+                </FormGroup>
+              </Form>
           </div>
         </div>
       );

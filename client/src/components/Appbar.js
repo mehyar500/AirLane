@@ -26,6 +26,14 @@ class Appbar extends Component {
             <a href="/">airLane</a>
           </Navbar.Brand>
         </Navbar.Header>
+        <Nav>
+          <NavItem>
+            About Us
+          </NavItem>
+          <NavItem>
+            Become a Partner
+          </NavItem>
+        </Nav>
         <Nav pullRight>
           <NavItem>
             <Signup/>
