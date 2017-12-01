@@ -47,7 +47,7 @@ class NewResevation extends Component {
         <div className="row">
           <div className="col-md-3" />
           <div className="col-md-6">
-            <h1>Create New Plane Information</h1>
+            <h1>Create New Resevation Information</h1>
             <div className="account">Account info here</div>
           </div>
           <div className="col-md-3" />

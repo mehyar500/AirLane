@@ -2,11 +2,8 @@ import React, { Component } from "react";
 import { Button, Form, FormGroup,FormControl, InputGroup } from "react-bootstrap";
 
 class Profile extends Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
-
+  state = {};
+  
   render() {
       return (
         <div className="container one">

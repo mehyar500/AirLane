@@ -4,6 +4,8 @@ import Appbar from "./components/Appbar";
 import Appbody from "./components/Appbody";
 import NewPlane from "./components/NewPlane";
 import Profile from "./components/Profile";
+import NewResevation from "./components/NewResevation";
+import Map from "./components/Map";
 import "./App.css";
 
 class App extends Component {
@@ -14,6 +16,8 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Appbody} />
             <Route exact path="/newplane" component={NewPlane} />
+            <Route exact path="/NewResevation" component={NewResevation} />
+            <Route exact path="/Map" component={Map} />
             <Route exact path="/profile" component={Profile} />
             {/* <Route component={NoMatch} /> */}
           </Switch>
