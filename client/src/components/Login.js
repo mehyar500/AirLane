@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import API from "../Utils/API"
 import {
   Button,
   FormGroup,
@@ -15,12 +15,8 @@ class Login extends Component {
     super(props);
     this.state = {
       showModal: false,
-      firstName: "",
-      lastName: "",
       email: "",
-      password: "",
-      passwordConf: "",
-      userCreated: Date
+      password: ""
     };
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
@@ -36,7 +32,7 @@ class Login extends Component {
 
   // Handles updating component state when the user types into the input field
   handleChange = event => {
-    console.log(event.target.value);
+    // console.log(event.target.value);
     const { name, value } = event.target;
     this.setState({
       [name]: value
@@ -46,7 +42,8 @@ class Login extends Component {
   //when the form is submitted, use the API to save a user
   handleSubmit = event => {
     event.preventDefault();
-   
+    const {email, password} = this.state;
+    API.login(email, password);
   };
 
   render() {

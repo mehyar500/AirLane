@@ -18,6 +18,10 @@ export default class Map extends Component {
     }
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> c329ddfd50b1b9f5f71adaca0a73c83767ca23c7
     render() {
     return <div ref="map" style={mapStyle} ref="map">
         map is here
