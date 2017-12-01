@@ -33,7 +33,7 @@ router.post("/signup", (req, res) => {
             })
             .catch(err => console.log(err));
       })
-      .catch((err) => {
+      .catch((err) => { 
           // If an error occurred, send it to the client
           console.log(err);
           res.redirect("/");
@@ -47,7 +47,7 @@ router.post("/login", passport.authenticate('local', {
     successRedirect: "/profile", //if login was successful, redirect to profile page
     failureRedirect: "/" //if login unseccussful, redirect to homepage
 
-}), );
+}) );
 //matches /logout
 router.post("/logout", (req, res) => {
   console.log(`Logging out user:`);
