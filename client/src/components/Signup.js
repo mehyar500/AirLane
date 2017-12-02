@@ -8,7 +8,7 @@ import {
   Modal
 } from "react-bootstrap";
 
-const wellStyles = { maxWidth: 400, margin: '30px auto 10px' };
+// const wellStyles = { maxWidth: 400, margin: '30px auto 10px' };
 
 class Signup extends Component {
   constructor(props) {
@@ -100,7 +100,7 @@ class Signup extends Component {
 
 export default Signup;
 
-function newFunction() {
-  const wellStyles = { maxWidth: 400, margin: '0 auto 10px' };
-  return wellStyles;
-}
+// function newFunction() {
+//   const wellStyles = { maxWidth: 400, margin: '0 auto 10px' };
+//   return wellStyles;
+// }

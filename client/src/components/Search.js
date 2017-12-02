@@ -8,8 +8,7 @@ class Search extends Component {
   }
 
   render() {
-      return (
-        <div className="container">
+      return <div className="container">
           <div className="row">
             <div className="col-md-3"></div>
             <div className="col-md-6">
@@ -40,8 +39,7 @@ class Search extends Component {
             </div>
             <div className="col-md-3"></div>
           </div>
-        </div>
-      );
+        </div>;
     }
 }
 
