@@ -16,17 +16,17 @@ class Appbar extends Component {
   state = { showModal: false, showMenu: false};
 
   handleOpenMenu = () => {
-    this.state.showMenu = true;
+    this.setState({showMenu : true});
   }
   handleCloseMenu = () => {
-    this.state.showMenu = false;
+    this.setState({showMenu : false});
   }
 
   componentDidMount() {
     if (API.userAuth) {
-      this.handleOpenMenu
+      return this.handleOpenMenu;
     } else {
-      this.handleCloseMenu
+      return this.handleCloseMenu;
     }
   }
 

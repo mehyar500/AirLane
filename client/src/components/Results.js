@@ -3,6 +3,12 @@ import "./Appbody.css";
 
 
 class Results extends Component {
+  //set the map state
+  state = {
+    center: { lat: null, lng: null },
+    zoom: null
+  };
+
 
 	render() {
 		return (
@@ -22,6 +28,7 @@ class Results extends Component {
 			</div>
 		);
 	}
+
 }
 
 export default Results;

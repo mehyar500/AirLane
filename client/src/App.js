@@ -6,6 +6,7 @@ import Appbody from "./components/Appbody";
 import NewPlane from "./components/NewPlane";
 import Partner from "./components/Partner";
 import Profile from "./components/Profile";
+import NewResevation from "./components/NewResevation";
 import "./App.css";
 
 class App extends Component {
