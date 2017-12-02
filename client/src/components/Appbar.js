@@ -6,6 +6,7 @@ import {
   NavDropdown,
   MenuItem
 } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 import Signup from "./Signup";
 import Login from "./Login";
 import API from "../Utils/API";
@@ -39,10 +40,14 @@ class Appbar extends Component {
         </Navbar.Header>
         <Nav>
           <NavItem>
-            About Us
+            <NavLink to="/about">
+              About Us
+              </NavLink>
           </NavItem>
           <NavItem>
-            Become a Partner
+            <NavLink to="/partner">
+              Become a Partner
+            </NavLink>
           </NavItem>
         </Nav>
         <Nav pullRight>
