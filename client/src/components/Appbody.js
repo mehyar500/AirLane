@@ -22,6 +22,7 @@ class Appbody extends Component {
             <h4>Save money, meet awesome people, and worry less</h4>
           </div>
         </div>
+        
         <div className="row">
             <Form inline>
               <FormGroup>
@@ -42,7 +43,7 @@ class Appbody extends Component {
             </Form>
         </div>
       </div>
-      <div className="container one">
+      <div className="container">
         <Results />
       </div>
     </div>
