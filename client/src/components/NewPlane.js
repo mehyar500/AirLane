@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./Appbody.css";
 import API from "../Utils/API";
 
-
 class NewPlane extends Component {
   constructor(props) {
     super(props);
