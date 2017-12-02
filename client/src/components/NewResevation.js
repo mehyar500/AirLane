@@ -1,13 +1,7 @@
 import React, { Component } from "react";
 import "./Appbody.css";
 import API from "../Utils/API";
-// import {
-//   Button,
-//   FormGroup,
-//   FormControl,
-//   ControlLabel,
-//   Modal
-// } from "react-bootstrap";
+
 
 class NewResevation extends Component {
   constructor(props) {

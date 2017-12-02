@@ -1,17 +1,7 @@
 import React, { Component } from "react";
 import "./Appbody.css";
 import API from "../Utils/API";
-<<<<<<< HEAD
-// import {
-//   Button,
-//   FormGroup,
-//   FormControl,
-//   ControlLabel,
-//   Modal
-// } from "react-bootstrap";
-=======
 
->>>>>>> 0ccb768b4dd8efa8ad17de29a94a8a73493fbe83
 
 class NewPlane extends Component {
   constructor(props) {
