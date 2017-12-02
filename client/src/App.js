@@ -17,6 +17,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Appbody} />
             <Route exact path="/newplane" component={NewPlane} />
+            <Route exact path="/NewResevation" component={NewResevation} />
             <Route exact path="/about" component={About} />
             <Route exact path="/partner" component={Partner} />
             <Route exact path="/profile" component={Profile} />

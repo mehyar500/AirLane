@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import MapContainer from "./MapContainer";
 import "./Appbody.css";
 
 
@@ -8,7 +9,6 @@ class Results extends Component {
     center: { lat: null, lng: null },
     zoom: null
   };
-
 
 	render() {
 		return (
