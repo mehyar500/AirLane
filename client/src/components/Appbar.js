@@ -63,48 +63,43 @@ class Appbar extends Component {
   }
 
   render() {
-    return (
-      <Navbar>
-
+    return <Navbar fluid fixedTop>
         <Navbar.Header>
           <Navbar.Brand>
             <a href="/">airLane</a>
           </Navbar.Brand>
-          <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
-        <Nav>
-          <NavItem>
-            {/* <NavLink to="/about">
+          <Nav>
+            <NavItem>
+              {/* <NavLink to="/about">
               About Us
               </NavLink> */}
-          </NavItem>
-          <NavItem>
-            {/* <NavLink to="/partner">
+            </NavItem>
+            <NavItem>
+              {/* <NavLink to="/partner">
               Become a Partner
             </NavLink> */}
-          </NavItem>
-        </Nav>
-
-        <Nav pullRight>
-          {this.state.showMenu ? (<NavDropdown showmenu={this.state.showMenu} title="Menu" id="navdropdown">
-            <MenuItem href="/profile">Profile</MenuItem>
-            <MenuItem href="/newplane">List You're Airplane Now</MenuItem>
-            <MenuItem>Log Out</MenuItem>
-          </NavDropdown>) : (
-            <Nav>
-              <NavItem>
-                <Login/>
-              </NavItem>
-              <NavItem>
-                <Signup/>
-              </NavItem>
-            </Nav>
-          )}
-        </Nav>
+            </NavItem>
+          </Nav>
+          <Nav pullRight>
+            {this.state.showMenu ? <NavDropdown showmenu={this.state.showMenu} title="Menu" id="navdropdown">
+                <MenuItem href="/profile">Profile</MenuItem>
+                <MenuItem href="/newplane">
+                  List You're Airplane Now
+                </MenuItem>
+                <MenuItem>Log Out</MenuItem>
+              </NavDropdown> : <Nav>
+                <NavItem>
+                  <Login />
+                </NavItem>
+                <NavItem>
+                  <Signup />
+                </NavItem>
+              </Nav>}
+          </Nav>
         </Navbar.Collapse>
-      </Navbar>
-    );
+      </Navbar>;
   }
 }
 
