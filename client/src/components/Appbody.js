@@ -6,6 +6,7 @@ import {
   InputGroup,
   Button
 } from "react-bootstrap";
+import { Grid, Row, Col} from "react-bootstrap";
 import Results from "./Results";
 import "./Appbody.css";
 
@@ -15,19 +16,23 @@ class Appbody extends Component {
   render () {
     return (
       <div>
-      <div className="container one">
-        <div className="row">
-          <div>
-            <h1>Rent a plane anywhere in the world</h1>
+      <Grid className="one">
+        <Row>
+          <Col md={12}>
+            <h1>Rent a plane for any lane</h1>
             <h4>Save money, meet awesome people, and worry less</h4>
-          </div>
-        </div>
+          </Col>
+        </Row>
         
-        <div className="row">
+        <Row>
+          <Col md={12}>
             <Form inline>
               <FormGroup>
                 <InputGroup>
                   <FormControl type="text" placeholder="Location" name="location" />
+                </InputGroup>
+                <InputGroup>
+                  <FormControl type="text" placeholder="Destination" name="destination" />
                 </InputGroup>
                 <InputGroup>
                   <FormControl placeholder="How Many" name="howMany" />
@@ -41,11 +46,14 @@ class Appbody extends Component {
                 </Button>
               </FormGroup>
             </Form>
-        </div>
-      </div>
-      <div className="container">
-        <Results />
-      </div>
+          </Col>
+        </Row>
+      </Grid>
+      <Grid>
+        <Row>
+          <Results />
+        </Row>
+      </Grid>
     </div>
     );
   }

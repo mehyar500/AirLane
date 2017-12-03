@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import "./Appbody.css";
-import API from "../Utils/API";
+import { Grid, Row, Col } from "react-bootstrap";
 import {
   Button,
   FormGroup,
@@ -8,6 +7,8 @@ import {
   ControlLabel,
   Modal
 } from "react-bootstrap";
+import API from "../Utils/API";
+import "./Appbody.css";
 
 class NewResevation extends Component {
   constructor(props) {
@@ -43,16 +44,14 @@ class NewResevation extends Component {
 
   render() {
     return (
-      <div className="container one">
-        <div className="row">
-          <div className="col-md-3" />
-          <div className="col-md-6">
-            <h1>Create New Plane Information</h1>
+      <Grid className="one">
+        <Row>
+          <Col md={6} mdOffset={3}>
+            <h1>Create New Reservation Information</h1>
             <div className="account">Account info here</div>
-          </div>
-          <div className="col-md-3" />
-        </div>
-      </div>
+          </Col>
+        </Row>
+      </Grid>
     );
   }
 }

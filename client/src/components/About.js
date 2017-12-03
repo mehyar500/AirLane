@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Results from "./Results";
+import { Grid, Row, Col } from "react-bootstrap";
 import "./Appbody.css";
 
 
@@ -8,15 +8,18 @@ class About extends Component {
   render () {
     return (
 		<div>
-			<div className="container one">
-				<div className="row">
-					<div>
-						<h1>About Us</h1>
-						<h4>We'll Explain somethings here</h4>
-						<h5> i just added this</h5>
-					</div>
-				</div>
-			</div>
+			<Grid>
+				<h1 className="one">About Us</h1>
+				<Row>
+					<Col md={6} className="one">
+						<p> We are making a peer to peer aircraft network to make traveling easier</p>
+						<p> With this network, consumers will be able to connect with nearby aircraft to make traveling more convenient than through the commerical airlines.</p>
+					</Col>
+					<Col md={5} mdOffset={1} className="one">
+						<p>picture of the group</p>
+					</Col>
+				</Row>
+			</Grid>
 		</div>
     );			
   }
