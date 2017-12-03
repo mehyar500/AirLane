@@ -2,43 +2,59 @@ import axios from "axios";
 
 export default {
   // Gets all user
-  getUsers: function() {
-    return axios.get("/api/user");
+  getUsers: () => {
+    axios.get("/api/user");
   },
   // Gets the user with the given id
-  getUser: function(id) {
-    return axios.get("/api/user/" + id);
+  getUser: id => {
+    axios.get("/api/user/" + id);
   },
   // Deletes the user with the given id
-  deleteUser: function(id) {
-    return axios.delete("/api/user/" + id);
+  deleteUser: id => {
+    axios.delete("/api/user/" + id);
   },
   // Saves a user to the database
-  saveUser: function(userData) {
-    return axios.post("/signup", userData);
+  saveUser: userData => {
+    axios.post("/signup", userData);
   },
   //login user
-  login: function(userData) {
-    return axios.get("/login", userData);
+  login: userData => {
+    axios.get("/login", userData);
   },
   //check if user is authenticated
-  userAuth: function() {
-    return axios.get("/userauth");
+  userAuth: () => {
+    axios.get("/userauth");
   },
-    // Gets all Plane
-  getPlanes: function() {
-    return axios.get("/api/aircraft");
+  // Gets all Plane
+  getPlanes: () => {
+    axios.get("/api/aircraft");
   },
   // Gets the Plane with the given id
-  getPlane: function(id) {
-    return axios.get("/api/aircraft" + id);
+  getPlane: id => {
+    axios.get("/api/aircraft" + id);
   },
   // Deletes the Plane with the given id
-  deletePlane: function(id) {
-    return axios.delete("/api/aircraft" + id);
+  deletePlane: id => {
+    axios.delete("/api/aircraft" + id);
   },
   // Saves a Plane to the database
-  savePlane: function(planeData) {
-    return axios.post("/api/aircraft", planeData);
+  savePlane: planeData => {
+    axios.post("/api/aircraft", planeData);
+  },
+  //Gets all Lanes
+  getLanes: () => {
+    axios.get("/api/airlane");
+  },
+  // Gets the Lane with the given id
+  getLane: id => {
+    axios.get("/api/airlane" + id);
+  },
+  // Deletes the Lane with the given id
+  deleteLane: id => {
+    axios.delete("/api/airlane" + id);
+  },
+  // Saves a Lane to the database
+  saveLane: laneData => {
+    axios.post("/api/airlane", laneData);
   }
 };

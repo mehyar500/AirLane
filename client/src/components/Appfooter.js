@@ -1,7 +1,8 @@
+import About from './About_BASE_796';
 import React, { Component } from "react";
 import { Grid, Row, Col } from "react-bootstrap";
-import About from "./About";
-import "./Appbody.css";
+import { } from './About';
+import './Appbody.css';
 
 
 
@@ -17,6 +18,7 @@ class Appfooter extends Component {
 							, <a href="">Stephane Avezado</a> 
 							, <a href="https://github.com/cmoxey8719">Christopher Moxey</a> 2017
 						</p>
+						<About />
 					</Col>
 				</Row>
 			</Grid>

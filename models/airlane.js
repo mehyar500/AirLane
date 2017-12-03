@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const resevationSchema = new Schema({
+const airLaneSchema = new Schema({
     date: {
         type: Date
     },
@@ -19,6 +19,6 @@ const resevationSchema = new Schema({
     }
 });
 
-const Resevationdb = mongoose.model("Resevationdb", resevationSchema);
+const Airlanedb = mongoose.model("Airlanedb", airLaneSchema);
 
-module.exports = Resevationdb;
+module.exports = Airlanedb;
