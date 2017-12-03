@@ -7,6 +7,7 @@ import Appfooter from "./components/Appfooter";
 import NewPlane from "./components/NewPlane";
 import Partner from "./components/Partner";
 import Profile from "./components/Profile";
+import Search from "./components/Search";
 import "./App.css";
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
             <Route exact path="/about" component={About} />
             <Route exact path="/partner" component={Partner} />
             <Route exact path="/profile" component={Profile} />
+            <Route exact path="/search" component={Search} />
             {/* <Route component={NoMatch} /> */}
           </Switch>
           <Appfooter />
