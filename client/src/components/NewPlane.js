@@ -1,13 +1,14 @@
 import React, { Component } from "react";
+import {
+  Form,
+  FormControl,
+  FormGroup,
+  Button,
+  ControlLabel
+} from "react-bootstrap";
+import { Grid, Row, Col } from "react-bootstrap";
 import "./Appbody.css";
 import API from "../Utils/API";
-import {
-  Button,
-  FormGroup,
-  FormControl,
-  ControlLabel,
-  Modal
-} from "react-bootstrap";
 
 class NewPlane extends Component {
   constructor(props) {
@@ -48,18 +49,48 @@ class NewPlane extends Component {
 
   render() {
     return (
-      <div className="container one">
-        <div className="row">
-          <div className="col-md-3" />
-          <div className="col-md-6">
-            <h1>Create New Plane Information</h1>
-            <div className="account">Account info here</div>
-          </div>
-          <div className="col-md-3" />
-        </div>
-      </div>
+      <Grid className="one">
+        <Row>
+          <h1>Create New Plane Information</h1>
+          <Col md={4} mdOffset={4}>
+            <Form horizontal>
+              <FormGroup controlId="formHorizontalName">
+                <Col componentClass={ControlLabel} md={3}>
+                  Name:
+                </Col>
+                <Col md={12}>
+                <FormControl type="text" onChange={this.handleChange} />
+                </Col>
+              </FormGroup>
+              <FormGroup controlId="formHorizontalType">
+                <Col componentClass={ControlLabel} md={3}>
+                  Aircraft:
+                </Col>
+                <Col md={12}>
+                <FormControl type="text" onChange={this.handleChange} />
+                </Col>
+              </FormGroup>
+              <FormGroup controlId="formHorizontalCapacity">
+                <Col componentClass={ControlLabel} md={5}>
+                  Seat Capacity:
+                </Col>
+                <Col md={12}>
+                <FormControl type="text" onChange={this.handleChange} />
+                </Col>
+              </FormGroup>
+              <FormGroup>
+                <Button className="btn-primary" type="submit" onClick={this.handleSubmit}>
+                  Create
+                </Button>
+              </FormGroup>
+            </Form>
+          </Col>
+        </Row>
+      </Grid>
     );
   }
 }
 
 export default NewPlane;
+
+
