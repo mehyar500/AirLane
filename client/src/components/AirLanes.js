@@ -10,7 +10,7 @@ import {
 import API from "../Utils/API";
 import "./Appbody.css";
 
-class NewResevation extends Component {
+class AirLanes extends Component {
   constructor(props) {
     super(props);
     this.state = { showModal: false, date: "", howMany: "", location: "", destination: "", price: "" };
@@ -39,7 +39,7 @@ class NewResevation extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const { date, howMany, location, destination, price } = this.state;
-    API.savePlane(date, howMany, location, destination, price);
+    
   };
 
   render() {
@@ -56,4 +56,4 @@ class NewResevation extends Component {
   }
 }
 
-export default NewResevation;
+export default AirLanes;
