@@ -11,7 +11,7 @@ import "./Appbody.css";
 
 
 class Appbody extends Component {
-
+  
   render () {
     return (
       <div>
@@ -35,7 +35,6 @@ class Appbody extends Component {
                 <InputGroup>
                   <FormControl placeholder="Trip Date" name="date" />
                 </InputGroup>
-                {"  "}
                 <Button className="btn-primary" type="submit">
                   Search
                 </Button>

@@ -3,25 +3,25 @@ import MapContainer from "./MapContainer";
 import "./Appbody.css";
 
 class Results extends Component {
-  //set the map state
-  state = {
-    center: { lat: null, lng: null },
-    zoom: null
-  };
-
+  constructor(props) {
+    super(props);
+    //set the map state
+    this.state = {
+      center: { lat: null, lng: null },
+      zoom: null
+    };
+  } 
 	render() {
 		return (
 			<div className="container">
 				<div className="row">
-					<div className="col-md-5 one">
+					<div className="col-md-6">
 						<h3>Results</h3>
 						<p> reults here </p>
 						<div className="results"></div>
 					</div>
-					<div className="col-md-1"></div>
-					<div className="col-md-6 one">
-						<h3> Google Maps here </h3>
-						<div className="google"></div>
+					<div className="col-md-6" style={{position: "relative",  display: "block"}}>
+            <MapContainer />
 					</div>
 				</div>
 			</div>
