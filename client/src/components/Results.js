@@ -64,9 +64,10 @@ class Results extends Component {
 					</Col>
 
 					<Col md={5} mdOffset={1} className="one">
-						<h3> Google Maps here </h3>
+						{/* <h3> Google Maps here </h3>
 						<img width={370} height={370} src="https://www.applecreekranch.com/assets/img/image-placeholder.png" alt="Image" />
-						<div className="google"></div>
+						<div className="google"></div> */}
+						<MapContainer />
 					</Col>
 				</Row>
 			</Grid>
