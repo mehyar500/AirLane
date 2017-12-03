@@ -25,7 +25,7 @@ const MapWithAMarker = compose(
     >
       {props.isMarkerShown && <Marker position={{ lat: -34.397, lng: 150.644 }} onClick={props.onMarkerClick} />}
     </GoogleMap>
-  )
+  );
 
 
 //Google Maps Api Key "AIzaSyC7lZx7iiP5OJjxv2r8U-rzLfU3C8MBzUA"
