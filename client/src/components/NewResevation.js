@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-<<<<<<< HEAD
 import { Grid, Row, Col } from "react-bootstrap";
 import {
   Button,
@@ -10,17 +9,6 @@ import {
 } from "react-bootstrap";
 import API from "../Utils/API";
 import "./Appbody.css";
-=======
-import "./Appbody.css";
-import API from "../Utils/API";
-// import {
-//   Button,
-//   FormGroup,
-//   FormControl,
-//   ControlLabel,
-//   Modal
-// } from "react-bootstrap";
->>>>>>> master
 
 class NewResevation extends Component {
   constructor(props) {
@@ -56,18 +44,10 @@ class NewResevation extends Component {
 
   render() {
     return (
-<<<<<<< HEAD
       <Grid className="one">
         <Row>
           <Col md={6} mdOffset={3}>
             <h1>Create New Reservation Information</h1>
-=======
-      <div className="container one">
-        <div className="row">
-          <div className="col-md-3" />
-          <div className="col-md-6">
-            <h1>Create New Resevation Information</h1>
->>>>>>> master
             <div className="account">Account info here</div>
           </Col>
         </Row>
