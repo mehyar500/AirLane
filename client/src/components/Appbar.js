@@ -13,6 +13,7 @@ import API from "../Utils/API";
 
 class Appbar extends Component {
 
+
  constructor(props) {
     super(props);
     this.state = { showModal: false, date: "", howMany: "", location: "", destination: "", price: "" };
@@ -43,6 +44,23 @@ class Appbar extends Component {
     const { date, howMany, location, destination, price } = this.state;
     API.savePlane(date, howMany, location, destination, price);
   };
+
+  state = { showModal: false, showMenu: false};
+
+  handleOpenMenu = () => {
+    this.setState({showMenu : true});
+  }
+  handleCloseMenu = () => {
+    this.setState({showMenu : false});
+  }
+
+  componentDidMount() {
+    if (API.userAuth) {
+      return this.handleOpenMenu;
+    } else {
+      return this.handleCloseMenu;
+    }
+  }
 
   render() {
     return (

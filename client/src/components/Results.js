@@ -1,9 +1,15 @@
 import React, { Component } from "react";
 import { Grid, Row, Col, Media, Button } from "react-bootstrap";
+import MapContainer from "./MapContainer";
 import "./Appbody.css";
 
 
 class Results extends Component {
+  //set the map state
+  state = {
+    center: { lat: null, lng: null },
+    zoom: null
+  };
 
 	render() {
 		return (
@@ -65,6 +71,7 @@ class Results extends Component {
 			</Grid>
 		);
 	}
+
 }
 
 export default Results;

@@ -5,11 +5,11 @@ const Schema = mongoose.Schema;
 const aircraftSchema = new Schema({
   name: {
     type: String,
-    required: "Name is required",
     trim: true
   },
   type: {
-    type: String
+    type: String,
+    trim: true
   },
   capacity: {
     type: Number

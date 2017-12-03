@@ -2,11 +2,8 @@ import React, { Component } from "react";
 import { Grid, Row, Col } from "react-bootstrap";
 
 class Profile extends Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
-
+  state = {};
+  
   render() {
       return (
         <Grid className="one">

@@ -10,7 +10,6 @@ import { Grid, Row, Col } from "react-bootstrap";
 import "./Appbody.css";
 import API from "../Utils/API";
 
-
 class NewPlane extends Component {
   constructor(props) {
     super(props);
