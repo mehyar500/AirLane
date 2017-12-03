@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import About from "./components/About";
 import Appbar from "./components/Appbar";
 import Appbody from "./components/Appbody";
+import Appfooter from "./components/Appfooter";
 import NewPlane from "./components/NewPlane";
 import Partner from "./components/Partner";
 import Profile from "./components/Profile";
@@ -23,6 +24,7 @@ class App extends Component {
             <Route exact path="/profile" component={Profile} />
             {/* <Route component={NoMatch} /> */}
           </Switch>
+          <Appfooter />
         </div>
       </Router>;
   }

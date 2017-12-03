@@ -1,20 +1,19 @@
 import React, { Component } from "react";
+import { Grid, Row, Col } from "react-bootstrap";
 
 class Profile extends Component {
   state = {};
   
   render() {
       return (
-        <div className="container one">
-          <div className="row">
-            <div className="col-md-3"></div>
-            <div className="col-md-6">
+        <Grid className="one">
+          <Row>
+            <Col md={6} mdOffset={3}>
               <h1>Your Name Here</h1>
               <div className="account">Account info here</div>
-            </div>
-            <div className="col-md-3"></div>
-          </div>
-        </div>
+            </Col>
+          </Row>
+        </Grid>
       );
   }
 
