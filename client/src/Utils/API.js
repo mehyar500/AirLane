@@ -17,6 +17,10 @@ export default {
   saveUser: userData => {
     axios.post("/signup", userData);
   },
+  // Saves a user profile to the database
+  saveProfile: profileData => {
+      axios.post("/profile", profileData);
+    },
   //login user
   login: userData => {
     axios.get("/login", userData);

@@ -10,6 +10,7 @@ import {
 import Signup from "./Signup";
 import Login from "./Login";
 import API from "../Utils/API";
+import Profile from "./Profile";
 
 class Appbar extends Component {
 
@@ -95,6 +96,9 @@ class Appbar extends Component {
                 </NavItem>
                 <NavItem>
                   <Signup />
+                </NavItem>
+                <NavItem>
+                  <Profile />
                 </NavItem>
               </Nav>}
           </Nav>
