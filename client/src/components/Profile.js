@@ -1,21 +1,22 @@
 import React, { Component } from "react";
-import { Button, 
+import { 
+  // Button, 
   Form, 
   FormGroup,
   FormControl, 
-  InputGroup, 
+  // InputGroup, 
   ControlLabel, 
-  Glyphicon, 
-  DropdownButton, 
-  MenuItem,
+  // Glyphicon, 
+  // DropdownButton, 
+  // MenuItem,
   Col,
-  Row
+  // Row
 } from "react-bootstrap";
-import API from "../Utils/API";
+// import API from "../Utils/API";
 
 
   
-  class Profile extends React.Component {
+  class Profile extends Component {
     constructor(props) {
       super(props);
       this.state = { showModal: false, firstName: "", lastName: "", email: "", password: "" };

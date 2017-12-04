@@ -41,6 +41,13 @@ class MapContainer extends Component {
     this.delayedShowMarker();
   }
 
+  // quick test code to see if containerElement presence check meant error did not occur
+  componentDidUpdate(prevProps, prevState) {
+    if (this.containerElement) {
+      super.componentDidUpdate(prevProps, prevState);
+    }
+  }
+
   delayedShowMarker = () => {
     setTimeout(() => {
       this.setState({ isMarkerShown: true });
@@ -53,7 +60,12 @@ class MapContainer extends Component {
   };
 
   render() {
-    return <MapWithAMarker isMarkerShown={this.state.isMarkerShown} onMarkerClick={this.handleMarkerClick} />;
+    return (
+      <MapWithAMarker
+        isMarkerShown={this.state.isMarkerShown}
+        onMarkerClick={this.handleMarkerClick}
+      />
+    );
   }
 }
 
