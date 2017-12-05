@@ -27,17 +27,17 @@ module.exports  = {
         Userdb.create(user)
               .then(user => {
                 console.log(user);
-                console.log("This is the userID for new user:");
+                console.log("This is the user ID for new user:");
                 console.log(user._id);
                 Userdb.findById({
-                    _id: user._id
+                    userID: user._id
                 }).then((user, error) => {
                     if (error) throw error;
                     console.log("NEW USER CREATED: ");
                     console.log(user);
                     //deserialize config is expecting user.userID to be accessible
                     console.log(user._id);
-                    req.login({ _id: user._id }, err => {
+                    req.login({ userID: user._id }, err => {
                       res.redirect("/");
                     });
                 })

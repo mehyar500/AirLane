@@ -54,16 +54,25 @@ app.use(routes);
 
 // passport config
 passport.use(new LocalStrategy(Userdb.authenticate()));
-passport.serializeUser(Userdb.serializeUser());
-passport.deserializeUser(Userdb.deserializeUser());
+passport.serializeUser((user, done) => {
+    console.log('serializing user: ');
+    console.log(user);
+    done(null, user._id);
+  });
+passport.deserializeUser((id, done) => {
+  user.findById(id, (err, user) => {
+    console.log("no im not serial");
+    done(err, user);
+  });
+});
 
 // Send every request to the React app
 // Define any API routes before this runs
-app.get("*", function(req, res) {
+app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
   console.log("Done sending every request to Reazt app");
 });
 
-app.listen(PORT, function() {
+app.listen(PORT, () => {
   console.log(`🌎 ==> Server now on port ${PORT}!`);
 });

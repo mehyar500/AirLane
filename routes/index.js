@@ -5,14 +5,12 @@ const Userdb = require("../models/users.js");
 const userController = require("../controllers/userController");
 const path = require("path");
 const session = require("express-session");
-const authenticationMiddleware = require("../utils/authenticationMiddleware");
+// const authenticationMiddleware = require("../utils/authenticationMiddleware");
 
 // userauth page. Only renders if authentication is verified, if not, redirect to root 
 router.get(
   "/userauth",
   passport.authenticate("local", {
-    // by default, local strategy uses username and password, we will override with email
-    usernameField: "email",
     successRedirect: "/profile", //if login was successful, redirect to profile page
     failureRedirect: "/" //if login unseccussful, redirect to homepage
   })/*,
@@ -33,10 +31,31 @@ router
 router.post(
   "/login",
   //authenticate input against database
-  passport.authenticate("local", {
-    successRedirect: "/profile", //if login was successful, redirect to profile page
-    failureRedirect: "/" //if login unseccussful, redirect to homepage
-  })
+  (req, res, next) => {
+    passport.authenticate(
+      "local",
+      {
+        // by default, local strategy uses username and password, we will override with email
+        usernameField: "email",
+        successRedirect: "/profile", //if login was successful, redirect to profile page
+        failureRedirect: "/" //if login unseccussful, redirect to homepage
+      },
+      (err, user, info) => {
+        if (err) {
+          return next(err);
+        }
+
+        if (!user) {
+          return res.status(401).json({
+            err: info
+          });
+        }
+
+        console.log("got user");
+        return res.json(200, { user_id: user._id });
+      }
+    )(req, res, next);
+  }
 );
 
 //matches /logout
