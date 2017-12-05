@@ -15,15 +15,20 @@ export default {
   },
   // Saves a user to the database
   saveUser: userData => {
+    // console.log(userData);
     axios.post("/signup", userData);
+    console.log("Done sending new user data to the route '/signup' and userData: " + userData);
   },
   //login user
-  login: userData => {
-    axios.get("/login", userData);
+  loginUser: userData => {
+    console.log(userData);
+    axios.post("/login", userData);
+    console.log("Done sending loggin data to '/login' and userDate: " + userData);
   },
   //check if user is authenticated
   userAuth: () => {
     axios.get("/userauth");
+    console.log("Done send authenticating user data to route'/userauth'")
   },
   // Gets all Plane
   getPlanes: () => {

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Grid, Row, Col, Media, Button, Image } from "react-bootstrap";
-// import MapContainer from "./MapContainer";
+import MapContainer from "./MapContainer";
 import "./Appbody.css";
 
 class Results extends Component {
@@ -45,7 +45,7 @@ class Results extends Component {
           </Col>
 
           <Col md={5} mdOffset={1} className="one">
-            {/* <MapContainer /> */}
+            <MapContainer />
           </Col>
         </Row>
       </Grid>

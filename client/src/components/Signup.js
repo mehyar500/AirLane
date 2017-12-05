@@ -43,8 +43,9 @@ class Signup extends Component {
   //when the form is submitted, use the API to save a user
   handleSubmit = event => {
     event.preventDefault();
-   const {firstName, lastName, password} = this.state;
-   API.saveUser(firstName, lastName, password).then(console.log(firstName, lastName, password)).catch(err => console.log("Signup.js API call " + err))
+   const { firstName, lastName, password, email } = this.state;
+   API.saveUser({firstName, lastName, password, email});
+   console.log("Done pushing new user data to axios");
   };
 
   render() {
