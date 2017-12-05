@@ -43,7 +43,7 @@ class Login extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const {email, password} = this.state;
-    API.login(email, password);
+    API.loginUser( {email, password} );
   };
 
   render() {

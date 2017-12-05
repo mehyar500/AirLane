@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
+const passportLocalMongoose = require("passport-local-mongoose");
+const bcrypt = require("bcrypt");
 
 const userSchema = new Schema({
   firstName: {
@@ -33,6 +34,31 @@ const userSchema = new Schema({
   }
 });
 
-const User = mongoose.model("Userdb", userSchema);
+//hashing a password before saving it to the database
+userSchema.pre('save', function (next) {
+  let user = this;
+  bcrypt.hash(user.password, 10, function (err, hash){
+    if (err) {
+      return next(err);
+    }
+    user.password = hash;
+    console.log("Hashed password: " + hash);
+    next();
+  })
+});
 
-module.exports = User;
+// userSchema.methods.comparePassword = function(passwordAttempt, cb) {
+//   bcrypt.compare(passwordAttempt, this.password, function(err, isMatch) {
+//     if (err) {
+//       return cb(err);
+//     } else {
+//       cb(null, isMatch);
+//     }
+//   });
+// };
+
+// userSchema.plugin(passportLocalMongoose);
+
+const Userdb = mongoose.model("Userdb", userSchema);
+
+module.exports = Userdb;

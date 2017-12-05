@@ -37,6 +37,7 @@ class Profile extends Component {
     this.setState({ showModal: false });
   };
 
+
   // Handles updating component state when the user types into the input field
   handleChange = event => {
     // console.log(event.target.value);
