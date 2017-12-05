@@ -17,7 +17,6 @@ export default {
   saveUser: userData => {
     // console.log(userData);
     axios.post("/signup", userData);
-    console.log("Done sending new user data to the route '/signup' and userData: " + userData);
   },
   // Saves a user profile to the database
   saveProfile: profileData => {
@@ -25,13 +24,11 @@ export default {
     },
   //login user
   loginUser: userData => {
-    console.log(userData);
     axios.post("/login", userData);
-    console.log("Done sending loggin data to '/login' and userDate: " + userData);
   },
   //check if user is authenticated
   userAuth: () => {
-    axios.get("/userauth").catch(err => {throw err});
+    axios.get("/userauth").then(res => {console.log(res); return res}).catch(err => {throw err});
   },
   // Gets all Plane
   getPlanes: () => {

@@ -17,7 +17,7 @@ class Appbar extends Component {
 
  constructor(props) {
     super(props);
-    this.state = { showModal: false, disabled: false, date: "", howMany: "", location: "", destination: "", price: "" };
+    this.state = { showModal: false, hideItem: false, date: "", howMany: "", location: "", destination: "", price: "" };
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
   }
@@ -47,8 +47,16 @@ class Appbar extends Component {
   };
 
   componentDidMount() {
+    this.checkAuth();
+  }
+
+  checkAuth = (req, res) => {
     API.userAuth();
-    API.userAuth() ? this.setState({ disabled : false}) : this.setState({ disabled : true});
+  //   if ) {
+  //     this.setState({hideItem: false});
+  //   } else {
+  //     this.setState({ hideItem: true });
+  //   }
   }
 
   render() {
@@ -72,20 +80,19 @@ class Appbar extends Component {
             </NavItem>
           </Nav>
           <Nav pullRight>
-            {this.state.disabled ? <NavDropdown disabled={this.state.disabled} title="Menu" id="navdropdown">
-                <MenuItem href="/profile">Profile</MenuItem>
-                <MenuItem href="/newplane">
-                  List You're Airplane Now
-                </MenuItem>
-                <MenuItem>Log Out</MenuItem>
-              </NavDropdown> : <Nav>
-                <NavItem>
-                  <Login />
-                </NavItem>
-                <NavItem>
-                  <Signup />
-                </NavItem>
-              </Nav>}
+            <NavDropdown hidden={this.state.hidden} title="Menu" id="navdropdown">
+              <MenuItem href="/profile">Profile</MenuItem>
+              <MenuItem href="/newplane">List You're Airplane Now</MenuItem>
+              <MenuItem>Log Out</MenuItem>
+            </NavDropdown>
+            <Nav hidden={this.state.hidden}>
+              <NavItem>
+                <Login />
+              </NavItem>
+              <NavItem>
+                <Signup />
+              </NavItem>
+            </Nav>
           </Nav>
         </Navbar.Collapse>
       </Navbar>;

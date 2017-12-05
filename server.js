@@ -57,65 +57,6 @@ passport.use(new LocalStrategy(Userdb.authenticate()));
 passport.serializeUser(Userdb.serializeUser());
 passport.deserializeUser(Userdb.deserializeUser());
 
-// passport session setup: passport needs ability to serialize and unserialize users out of session.
-// passport.use(new LocalStrategy(passport.authenticate()));
-// passport.serializeUser((user, done) => {
-//   console.log(user);
-//   done(null, user._id);
-// });
-//Deserialized user
-// passport.deserializeUser((user, done) => {
-//   console.log("deserializing user: " + user);
-//   Userdb.findById(user._id, (err, user) => {
-//     if (err) {
-//       done(err);
-//     }
-
-//     done(null, user);
-//   });
-// });
-//use passport local strategy
-// passport.use(
-//   new LocalStrategy(
-//     {
-//       usernameField: "email"
-//     },
-//     (email, password, done) => {
-//       console.log(email, password);
-//       Userdb.findOne({ email: email }, (err, user) => {
-//          if (err) {
-//            return done(err);
-//          }
-//          if (!user) {
-//            return done(null, false, {
-//              message: "Incorrect email."
-//            });
-//          }
-
-//         const hash = user.password;
-//         console.log("Hashed Pass: " + hash);
-//         if (hash.length === 0) {
-//           //essentially, if no user info is returned
-//           done(null, false);
-//         } else {
-//           //... else, run the bycrypt compare method to authenticate
-//           //bcrypt de-hash
-//           bcrypt.compare(password, hash, (err, response) => {
-//             if (response === true) {
-//               console.log("Successful login!");
-//               return done(null, user);
-//             } else {
-//               console.log("Unsuccessful login!");
-//               return done(null, false);
-//             }
-//           });
-//         }
-
-//       });
-//     }
-//   )
-// );
-
 // Send every request to the React app
 // Define any API routes before this runs
 app.get("*", function(req, res) {

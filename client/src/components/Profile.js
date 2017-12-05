@@ -50,8 +50,9 @@ class Profile extends Component {
   //when the form is submitted, use the API to save a user
   handleSubmit = event => {
     event.preventDefault();
-   const {firstName, lastName, emailAddress, jetModel, jstId, jstLocation, maxocc, smoking, wifi, phone, entertainment, bedroom} = this.state;
-   API.saveUser(firstName, lastName, emailAddress, jetModel, jstId, jstLocation, maxocc, smoking, wifi, phone, entertainment, bedroom).then(console.log(firstName, lastName, emailAddress, jetModel, jstId, jstLocation, maxocc, smoking, wifi, phone, entertainment, bedroom)).catch(err => console.log("Signup.js API call " + err))
+    const {firstName, lastName, emailAddress, jetModel, jstId, jstLocation, maxocc, smoking, wifi, phone, entertainment, bedroom} = this.state;
+    // API.saveUser(firstName, lastName, emailAddress, jetModel, jstId, jstLocation, maxocc, smoking, wifi, phone, entertainment, bedroom).then(console.log(firstName, lastName, emailAddress, jetModel, jstId, jstLocation, maxocc, smoking, wifi, phone, entertainment, bedroom)).catch(err => console.log("Signup.js API call " + err))
+  
   };
 
   render() {
