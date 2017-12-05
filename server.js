@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
@@ -14,16 +15,23 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const bcrypt = require('bcrypt');
 
+
 //set up cookies for sessions
 app.use(cookieParser());
+console.log("Cookie parser does");
 
 // Configure body parser for AJAX requests
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
+console.log("done configuring body-parser for ajax");
+
+// log every request to the console
+app.use(morgan('dev'));
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
+  console.log("production env: serve up static");
 }
 
 // Set up promises with mongoose
@@ -32,27 +40,37 @@ mongoose.Promise = global.Promise;
 // Connect to the Mongo DB
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/airlane";
 mongoose.connect(MONGODB_URI, { useMongoClient: true });
+console.log("Done connectin to mongoose");
 
 //initialize passport and express-session
 app.use(session({
     secret: 'holla hoops', //random key
     store: new MongoStore({ url: MONGODB_URI }),
-    resave: false,
+    resave: true,
     saveUninitialized: false
 }));
+console.log("Done initializing passport and express session");
+
+//initialize passport with express app
 app.use(passport.initialize());
+console.log("server app using initilized passport");
+//setup a passport session to be used with express app
 app.use(passport.session());
+console.log("server app using initialized session");
 
 // Add routes, both API and view
 app.use(routes);
+console.log("server app using routes");
 
-//setting passport for log in, log out and signup
+
+
+// passport session setup: passport needs ability to serialize and unserialize users out of session.
+// passport.use(new LocalStrategy(Userdb.authenticate()));
 passport.serializeUser((user, done) => {
-  done(null, user);
+  done(null, user._id);
 });
-
-passport.deserializeUser((user, done) => {
-  Userdb.findOne({ _id: user.userID }).then((user, error) => {
+passport.deserializeUser((_id, done) => {
+  Userdb.findById(_id, (err, user) => {
     if (error) {
       done(error);
     }
@@ -64,34 +82,43 @@ passport.deserializeUser((user, done) => {
 passport.use(
   new LocalStrategy(
     {
-      usernameField: "email" //change default username to email
+      usernameField: "email"
     },
     (email, password, done) => {
-      console.log(email);
-      console.log(password);
-      // return done(null, "LOGIN SUCCESSFUL!");
-      Userdb.findOne({ email }).then((user, error) => {
-        if (error) {
-          done(error);
-        }
-        const hashPass = user.password;
-        console.log("Hash: " + hashPass);
-        if (hashPass.length === 0) {
+      console.log(email, password);
+      Userdb.findOne({ email: email }, (err, user) => {
+         if (err) {
+           return done(err);
+         }
+         if (!user) {
+           return done(null, false, {
+             message: "Incorrect email."
+           });
+         }
+         if (!user.validPassword(password)) {
+           return done(null, false, {
+             message: "Incorrect password."
+           });
+         }
+        // const hash = user.password;
+        // console.log("Hashed Pass: " + hash);
+        if (hash.length === 0) {
           //essentially, if no user info is returned
           done(null, false);
         } else {
           //... else, run the bycrypt compare method to authenticate
           //bcrypt de-hash
-          bcrypt.compare(password, hashPass, (err, response) => {
+          bcrypt.compare(password, hash, (err, response) => {
             if (response === true) {
               console.log("Successful login!");
-              return done(null, { userID: user._id });
+              return done(null, user);
             } else {
               console.log("Unsuccessful login!");
               return done(null, false);
             }
           });
         }
+
       });
     }
   )
@@ -101,6 +128,7 @@ passport.use(
 // Define any API routes before this runs
 app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  console.log("Done sending every request to Reazt app");
 });
 
 app.listen(PORT, function() {
