@@ -67,12 +67,15 @@ console.log("server app using routes");
 // passport session setup: passport needs ability to serialize and unserialize users out of session.
 // passport.use(new LocalStrategy(Userdb.authenticate()));
 passport.serializeUser((user, done) => {
+  console.log(user);
   done(null, user._id);
 });
-passport.deserializeUser((_id, done) => {
-  Userdb.findById(_id, (err, user) => {
-    if (error) {
-      done(error);
+
+passport.deserializeUser((user, done) => {
+  console.log(user);
+  Userdb.findById(user._id, (err, user) => {
+    if (err) {
+      done(err);
     }
 
     done(null, user);
@@ -95,13 +98,9 @@ passport.use(
              message: "Incorrect email."
            });
          }
-         if (!user.validPassword(password)) {
-           return done(null, false, {
-             message: "Incorrect password."
-           });
-         }
-        // const hash = user.password;
-        // console.log("Hashed Pass: " + hash);
+
+        const hash = user.password;
+        console.log("Hashed Pass: " + hash);
         if (hash.length === 0) {
           //essentially, if no user info is returned
           done(null, false);
