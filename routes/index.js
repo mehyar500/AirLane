@@ -1,6 +1,7 @@
 const apiRoutes = require("./api/index.js");
 const router = require("express").Router();
 const passport = require("passport");
+const Userdb = require("../models/users.js");
 const userController = require("../controllers/userController");
 const path = require("path");
 const session = require("express-session");
@@ -23,22 +24,16 @@ router
 
 
 //matches /login
-router.get("/login", (req, res, next) => {
-  passport.authenticate("local", (err, user, info) => {
-    if (err) {
-      return next(err);
-    }
-    if (!user) {
-      return res.redirect("/login");
-    }
-    req.logIn(user, (err) => {
-      if (err) {
-        return next(err);
-      }
-      return res.redirect("/profile");
-    });
-  })(req, res, next);
-});
+router.post(
+  "/login",
+  //authenticate input against database
+  passport.authenticate("local", {
+    successRedirect: "/profile", //if login was successful, redirect to profile page
+    failureRedirect: "/" //if login unseccussful, redirect to homepage
+  })
+);
+
+
 
 
 //matches /logout

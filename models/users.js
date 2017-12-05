@@ -34,7 +34,7 @@ const userSchema = new Schema({
   }
 });
 
-//hashing a password before saving it to the database
+//prehook to your mongoose schema with bcrypt, hashing a password before saving it to the database
 userSchema.pre('save', function (next) {
   let user = this;
   bcrypt.hash(user.password, 10, function (err, hash){
