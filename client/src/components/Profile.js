@@ -5,12 +5,7 @@ import {
   FormGroup,
   FormControl,
   ControlLabel,
-  Modal,
-  Form, 
-  DropdownButton, 
-  MenuItem,
-  Col,
-  Row
+  Modal
 } from "react-bootstrap";
 
 class Profile extends Component {
