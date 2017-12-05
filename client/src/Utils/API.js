@@ -31,8 +31,7 @@ export default {
   },
   //check if user is authenticated
   userAuth: () => {
-    axios.get("/userauth");
-    console.log("Done send authenticating user data to route'/userauth'")
+    axios.get("/userauth").catch(err => {throw err});
   },
   // Gets all Plane
   getPlanes: () => {

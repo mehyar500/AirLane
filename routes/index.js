@@ -8,20 +8,18 @@ const session = require("express-session");
 const authenticationMiddleware = require("../utils/authenticationMiddleware");
 
 
-//userauth
-router.get("/userauth", (req, res) => {
-  if (req.isAuthenticated()) { //if user is authenticated, send user info, otherwise send false
-    res.json(req.user)
-} else {
-    res.json({})
-}
+// userauth page. Only renders if authentication is verified, if not, redirect to root 
+router.get("/userauth", passport.authenticate('local'), (req, res) => {
+  //console log user info if any
+  console.log(req.user);
+  console.log(req.isAuthenticated());
+  res.redirect("/");
 });
 
 //Matches with "/signup" 
 router
   .route("/signup")
   .post(userController.create)
-
 
 //matches /login
 router.post(
@@ -32,9 +30,6 @@ router.post(
     failureRedirect: "/" //if login unseccussful, redirect to homepage
   })
 );
-
-
-
 
 //matches /logout
 router.post("/logout", (req, res) => {
@@ -47,7 +42,7 @@ router.post("/logout", (req, res) => {
 });
 
 // profile page. Only renders if authentication is verified, if not, redirect to root 
-router.get("/profile", authenticationMiddleware(), (req, res) => {
+router.get("/profile", /*authenticationMiddleware()*/ passport.authenticate('local'), (req, res) => {
   //console log user info if any
   console.log(req.user);
   console.log(req.isAuthenticated());
@@ -59,8 +54,7 @@ router.use("/api", apiRoutes);
 
 // If no API routes are hit, send the React app
 router.use((req, res) => {
-  router.route("/userauth");
-  // res.sendFile(path.join(__dirname, "../client/build/index.html"));
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
 module.exports = router;

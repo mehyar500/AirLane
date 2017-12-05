@@ -47,17 +47,17 @@ userSchema.pre('save', function (next) {
   })
 });
 
-// userSchema.methods.comparePassword = function(passwordAttempt, cb) {
-//   bcrypt.compare(passwordAttempt, this.password, function(err, isMatch) {
-//     if (err) {
-//       return cb(err);
-//     } else {
-//       cb(null, isMatch);
-//     }
-//   });
-// };
+userSchema.methods.comparePassword = function(passwordAttempt, cb) {
+  bcrypt.compare(passwordAttempt, this.password, function(err, isMatch) {
+    if (err) {
+      return cb(err);
+    } else {
+      cb(null, isMatch);
+    }
+  });
+};
 
-// userSchema.plugin(passportLocalMongoose);
+userSchema.plugin(passportLocalMongoose);
 
 const Userdb = mongoose.model("Userdb", userSchema);
 

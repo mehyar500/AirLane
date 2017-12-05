@@ -17,7 +17,7 @@ class Appbar extends Component {
 
  constructor(props) {
     super(props);
-    this.state = { showModal: false, date: "", howMany: "", location: "", destination: "", price: "" };
+    this.state = { showModal: false, disabled: false, date: "", howMany: "", location: "", destination: "", price: "" };
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
   }
@@ -46,21 +46,9 @@ class Appbar extends Component {
     API.savePlane(date, howMany, location, destination, price);
   };
 
-  state = { showModal: false, showMenu: false};
-
-  handleOpenMenu = () => {
-    this.setState({showMenu : true});
-  }
-  handleCloseMenu = () => {
-    this.setState({showMenu : false});
-  }
-
   componentDidMount() {
-    if (API.userAuth) {
-      return this.handleOpenMenu;
-    } else {
-      return this.handleCloseMenu;
-    }
+    API.userAuth();
+    API.userAuth() ? this.setState({ disabled : false}) : this.setState({ disabled : true});
   }
 
   render() {
@@ -84,7 +72,7 @@ class Appbar extends Component {
             </NavItem>
           </Nav>
           <Nav pullRight>
-            {this.state.showMenu ? <NavDropdown showmenu={this.state.showMenu} title="Menu" id="navdropdown">
+            {this.state.disabled ? <NavDropdown disabled={this.state.disabled} title="Menu" id="navdropdown">
                 <MenuItem href="/profile">Profile</MenuItem>
                 <MenuItem href="/newplane">
                   List You're Airplane Now

@@ -1,11 +1,18 @@
+/*
+ * Check the request if the user is authenticated.
+ * Return an error message if not, otherwise keep going :)
+ */
 const authenticationMiddleware = () => {
   return (req, res, next) => {
-    console.log(
-      `req.session.passport.user: ${JSON.stringify(req.session.passport)}`
-    );
-
-    if (req.isAuthenticated()) return next();
-    res.redirect("/");
+    // isAuthenticated is set by `deserializeUser()`
+    if (!req.isAuthenticated || !req.isAuthenticated()) {
+      res.status(401).send({
+        success: false,
+        message: 'You need to be authenticated to access this page!'
+      })
+    } else {
+      next()
+    }
   };
 };
 
