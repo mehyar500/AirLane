@@ -10,6 +10,7 @@ import {
 import Signup from "./Signup";
 import Login from "./Login";
 import API from "../Utils/API";
+import NewLane from "./NewLane";
 
 class Appbar extends Component {
 

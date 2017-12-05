@@ -19,6 +19,10 @@ export default {
     axios.post("/signup", userData);
     console.log("Done sending new user data to the route '/signup' and userData: " + userData);
   },
+  // Saves a user profile to the database
+  saveProfile: profileData => {
+      axios.post("/profile", profileData);
+    },
   //login user
   loginUser: userData => {
     console.log(userData);
