@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const userRoutes = require("./user.js");
 const aircraftRoutes = require("./aircraft.js");
-const airLaneRoutes = require("./airlane");
+const airLaneRoutes = require("./airlane.js");
 const path = require("path");
 
 // user routes

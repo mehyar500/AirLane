@@ -54,7 +54,7 @@ class Login extends Component {
             <Modal.Title>Log In</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-           <div>
+           <div className="three">
               <form action="/login">
                 <FormGroup>
                   <ControlLabel htmlFor="email">Email</ControlLabel>

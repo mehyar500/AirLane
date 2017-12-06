@@ -5,6 +5,7 @@ import Appbar from "./components/Appbar";
 import Appbody from "./components/Appbody";
 import Appfooter from "./components/Appfooter";
 import NewPlane from "./components/NewPlane";
+import newlane from "./components/NewLane";
 import Partner from "./components/Partner";
 import Profile from "./components/Profile";
 import Login from "./components/Login";
@@ -21,6 +22,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Appbody} />
             <Route exact path="/newplane" component={NewPlane} />
+            <Route exact path="/newlane" component={NewPlane} />
             <Route exact path="/about" component={About} />
             <Route exact path="/partner" component={Partner} />
             <Route exact path="/profile" component={Profile} />

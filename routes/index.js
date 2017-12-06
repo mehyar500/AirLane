@@ -6,11 +6,12 @@ const path = require("path");
 const session = require("express-session");
 const passportFacebook = require("../facebookConfig");
 
+//API Routes
+router.use("/api", apiRoutes);
 
 //API Routes
 router
   .use("/api", apiRoutes);
-
 
 // If no API routes are hit, send the React app
 router.use((req, res) => {
