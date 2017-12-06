@@ -7,6 +7,8 @@ const path = require("path");
 const session = require("express-session");
 const authenticationMiddleware = require("../utils/authenticationMiddleware");
 
+//API Routes
+router.use("/api", apiRoutes);
 
 //userauth
 router.get("/userauth", (req, res) => {
@@ -54,8 +56,6 @@ router.get("/profile", authenticationMiddleware(), (req, res) => {
   res.redirect("/")
 });
 
-//API Routes
-router.use("/api", apiRoutes);
 
 // If no API routes are hit, send the React app
 router.use((req, res) => {
