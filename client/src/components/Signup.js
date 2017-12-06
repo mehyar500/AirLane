@@ -56,7 +56,7 @@ class Signup extends Component {
             <Modal.Title>Registeration</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <div>
+            <div className="three">
               <form action="/signup">
                 <FormGroup>
                   <ControlLabel htmlFor="firstName">

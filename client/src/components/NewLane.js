@@ -13,7 +13,7 @@ import "./Appbody.css";
 class NewLane extends Component {
   constructor(props) {
     super(props);
-    this.state = { showModal: false, start_city: "", end_city: "", flight_date: "", flight_type: "", price_range: "" };
+    this.state = { showModal: false, departure: "", arrival: "", flight_date: "", flight_type: "", price_range: "" };
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
   }
@@ -38,7 +38,8 @@ class NewLane extends Component {
   //when the form is submitted, use the API to save a new plane
   handleSubmit = event => {
     event.preventDefault();
-    const { start_city, end_city, flight_date, flight_type, price_range } = this.state;
+    const { departure, arrival, flight_date, flight_type, price_range } = this.state;
+    API.saveLane(departure, arrival, flight_date, flight_type, price_range);
     
   };
 
@@ -54,11 +55,11 @@ class NewLane extends Component {
         <form>
                 <FormGroup>
                   <ControlLabel htmlFor="filter_criterea_start_city">Start (City)</ControlLabel>
-                  <FormControl name="start_city" type="text" placeholder="Enter City or Airport name" onChange={this.handleChange} />
+                  <FormControl name="departure" type="text" placeholder="Enter City or Airport name" onChange={this.handleChange} />
                 </FormGroup>
                 <FormGroup>
                   <ControlLabel htmlFor="filter_criterea_end_city">Destination (City)</ControlLabel>
-                  <FormControl name="end_city" type="text" placeholder="Enter City or Airport name" onChange={this.handleChange} />
+                  <FormControl name="arrival" type="text" placeholder="Enter City or Airport name" onChange={this.handleChange} />
                 </FormGroup>
                 <FormGroup>
                   <ControlLabel htmlFor="filter_criterea_date">Flight Date</ControlLabel>
