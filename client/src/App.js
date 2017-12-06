@@ -7,7 +7,10 @@ import Appfooter from "./components/Appfooter";
 import NewPlane from "./components/NewPlane";
 import Partner from "./components/Partner";
 import Profile from "./components/Profile";
-import Search from "./components/Search";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+
+
 import "./App.css";
 
 class App extends Component {
@@ -21,7 +24,8 @@ class App extends Component {
             <Route exact path="/about" component={About} />
             <Route exact path="/partner" component={Partner} />
             <Route exact path="/profile" component={Profile} />
-            <Route exact path="/search" component={Search} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Signup} />
             {/* <Route component={NoMatch} /> */}
           </Switch>
           <Appfooter />

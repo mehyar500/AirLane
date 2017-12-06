@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const passportLocalMongoose = require("passport-local-mongoose");
 const bcrypt = require("bcrypt");
 
-const UserSchema = new Schema({
+const userSchema = new Schema({
   firstName: {
     type: String,
     trim: true,
@@ -39,53 +39,9 @@ const UserSchema = new Schema({
   }
 });
 
-//prehook to your mongoose schema with bcrypt, hashing a password before saving it to the database
-UserSchema.pre('save', function (next) {
-  let user = this;
-  bcrypt.hash(user.password, 10, function (err, hash){
-    if (err) {
-      return next(err);
-    }
-    user.password = hash;
-    console.log("Hashed password: " + hash);
-    next();
-  })
-});
 
-UserSchema.methods.comparePassword = function(passwordAttempt, cb) {
-  bcrypt.compare(passwordAttempt, this.password, function(err, isMatch) {
-    if (err) {
-      return cb(err);
-    } else {
-      cb(null, isMatch);
-    }
-  });
-};
+userSchema.plugin(passportLocalMongoose);
 
-UserSchema.static("authenticate", function(email, password, callback) {
-  this.findOne({ email: email }, function(err, user) {
-    if (err) {
-      console.log("findOne error occurred");
-      return callback(err);
-    }
-    if (!user) {
-      return callback(null, false);
-    }
-    user.verifyPassword(password, function(err, passwordCorrect) {
-      if (err) {
-        return callback(err);
-      }
-      if (!passwordCorrect) {
-        return callback(err, false, { message: "bad password" });
-      }
-      console.log("User Found, returning user");
-      return callback(null, user);
-    });
-  });
-});
-
-UserSchema.plugin(passportLocalMongoose);
-
-const Userdb = mongoose.model("Userdb", UserSchema);
+const Userdb = mongoose.model("Userdb", userSchema);
 
 module.exports = Userdb;

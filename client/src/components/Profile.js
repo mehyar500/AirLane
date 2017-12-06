@@ -25,8 +25,7 @@ class Profile extends Component {
   };
 
   componentDidMount() {
-    API.userAuth();
-    API.getUser();
+    
   }
 
   // Handles updating component state when the user types into the input field

@@ -16,7 +16,7 @@ module.exports  = {
     },
     findByEmail: (req, res) => {
         Userdb
-        .findByEmail(req.params.email)
+        .findOne(req.params.email)
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
@@ -24,28 +24,11 @@ module.exports  = {
         const user = req.body;
         console.log(user);
         Userdb.create(user)
-              .then(user => {
-                console.log(user);
-                console.log("This is the user ID for new user:");
-                console.log(user._id);
-                Userdb.findById(user._id).then((user, error) => {
-                    if (error) throw error;
-                    console.log("NEW USER CREATED: ");
-                    console.log(user);
-                    //deserialize config is expecting user.userID to be accessible
-                    console.log(user._id);
-                    req.login({ userID: user._id }, err => {
-                      res.redirect("/");
-                    });
-                })
-                .catch(err => {
-                // If an error occurred, send it to the client
-                console.log(err);
-                res.redirect("/");
-                });
-        })
-        .then(dbModel => res.json(dbModel))
-        .catch(err => { console.log(err); res.status(422).json(err); });
+          .then(dbModel => res.json(dbModel))
+          .catch(err => {
+            console.log(err);
+            res.status(422).json(err);
+          });
     },
     update: function(req, res) {
         Userdb

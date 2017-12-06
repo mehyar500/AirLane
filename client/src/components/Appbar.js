@@ -47,12 +47,12 @@ class Appbar extends Component {
   };
 
   componentDidMount() {
-    this.checkAuth();
+
   }
 
   checkAuth = (req, res) => {
-    API.userAuth();
-  //   if ) {
+    
+    //   if ) {
   //     this.setState({hideItem: false});
   //   } else {
   //     this.setState({ hideItem: true });

@@ -1,3 +1,4 @@
+import Profile from '../components/Profile';
 import axios from "axios";
 
 export default {
@@ -23,12 +24,13 @@ export default {
       axios.post("/profile", profileData);
     },
   //login user
-  loginUser: userData => {
-    axios.post("/login", userData);
+  facebookAuth: userData => {
+    axios.post("/auth/facebook", userData);
   },
   //check if user is authenticated
-  userAuth: () => {
-    axios.get("/userauth").then(res => {console.log(res); return res}).catch(err => {throw err});
+  profile: () => {
+    axios.get("/profile")
+         .then(res => {console.log(res); return res}).catch(err => {throw err});
   },
   // Gets all Plane
   getPlanes: () => {
