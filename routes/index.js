@@ -5,22 +5,22 @@ const Userdb = require("../models/users.js");
 const userController = require("../controllers/userController");
 const path = require("path");
 const session = require("express-session");
-// const authenticationMiddleware = require("../utils/authenticationMiddleware");
+const authenticationMiddleware = require("../utils/authenticationMiddleware");
 
-// userauth page. Only renders if authentication is verified, if not, redirect to root 
-router.get(
-  "/userauth",
-  passport.authenticate("local", {
-    successRedirect: "/profile", //if login was successful, redirect to profile page
-    failureRedirect: "/" //if login unseccussful, redirect to homepage
-  })/*,
-  (req, res) => {
-    //console log user info if any
-    console.log(req.user);
-    console.log(req.isAuthenticated());
-    res.redirect("/");
-  }*/
-);
+// // userauth page. Only renders if authentication is verified, if not, redirect to root 
+// router.get(
+//   "/userauth",
+//   passport.authenticate("local", {
+//     successRedirect: "/profile", //if login was successful, redirect to profile page
+//     failureRedirect: "/" //if login unseccussful, redirect to homepage
+//   })/*,
+//   (req, res) => {
+//     //console log user info if any
+//     console.log(req.user);
+//     console.log(req.isAuthenticated());
+//     res.redirect("/");
+//   }*/
+// );
 
 //Matches with "/signup" 
 router
@@ -28,35 +28,49 @@ router
   .post(userController.create)
 
 //matches /login
-router.post(
-  "/login",
-  //authenticate input against database
-  (req, res, next) => {
-    passport.authenticate(
-      "local",
-      {
-        // by default, local strategy uses username and password, we will override with email
-        usernameField: "email",
-        successRedirect: "/profile", //if login was successful, redirect to profile page
-        failureRedirect: "/" //if login unseccussful, redirect to homepage
-      },
-      (err, user, info) => {
-        if (err) {
-          return next(err);
-        }
+router.route("/login")
+      .get()
+      .post((req, res, next) => {
+        passport.authenticate( "local",(err, user) => {
+            console.log("LOGIN HIT");
+            console.log(user);// user = { userID: 5a272f2e823b922ad8dd55d8 }
+            
+            if (err) {
+              return next(err);
+            }
 
-        if (!user) {
-          return res.status(401).json({
-            err: info
-          });
-        }
+            if (!user) {
+              return res.status(401).json({
+                err: info
+              });
+            }
 
-        console.log("got user");
-        return res.json(200, { user_id: user._id });
-      }
-    )(req, res, next);
-  }
-);
+            console.log(req.body);
+            console.log("got user");
+            return res.json(200, { user_id: user._id });
+
+            //Compare against passwords in DOM and in MongoDB
+            // bcrypt.compare(req.body.passport, this.password, function(err, isMatch) {
+            //   if (err) {
+            //     return cb(err);
+            //   } else {
+            //     cb(null, isMatch);
+            //   }
+            // });
+
+          }
+        )(req, res, next);
+        }
+      );
+
+// profile page. Only renders if authentication is verified, if not, redirect to root 
+router.route("/profile")
+      .get(authenticationMiddleware(), (req, res) => {
+        //console log user info if any
+        console.log(req.user);
+        console.log(req.isAuthenticated());
+        res.redirect("/");
+      });
 
 //matches /logout
 router.post("/logout", (req, res) => {
@@ -68,14 +82,7 @@ router.post("/logout", (req, res) => {
   })
 });
 
-// profile page. Only renders if authentication is verified, if not, redirect to root 
-router.get("/profile", passport.authenticate('local'), (req, res) => {
-  //console log user info if any
-  console.log(req.user);
-  console.log(req.isAuthenticated());
-  router.get(userController.findByEmail);
 
-});
 
 //API Routes
 router.use("/api", apiRoutes);

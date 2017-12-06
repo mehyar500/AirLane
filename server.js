@@ -53,18 +53,58 @@ app.use(passport.session());
 app.use(routes);
 
 // passport config
-passport.use(new LocalStrategy(Userdb.authenticate()));
 passport.serializeUser((user, done) => {
-    console.log('serializing user: ');
-    console.log(user);
+    console.log("serializing user ID: " + user._id);
+    //saved to session req.session.passport.user = {id:'..'}
     done(null, user._id);
   });
 passport.deserializeUser((id, done) => {
   user.findById(id, (err, user) => {
     console.log("no im not serial");
+    //user object attaches to the request as req.user
     done(err, user);
   });
 });
+
+passport.use(
+  new LocalStrategy({
+    // by default, local strategy uses username and password, we will override with email
+    usernameField: "email",
+    successRedirect: "/profile", //if login was successful, redirect to profile page
+    failureRedirect: "/" //if login unseccussful, redirect to homepage
+  }, (email, password, done) =>{
+    console.log(email);
+    console.log(password);
+    Userdb.findOne({email})
+          .then((user, error) => {
+            if (error) {
+                done(error);
+            };
+
+            const hashPass = user.password;
+            console.log("Hash: " + hashPass);
+
+            //bcrypt de-hash
+            bcrypt.compare(password, hashPass, (err, response) => {
+                if (response === true) {
+                    console.log("Successful login!");
+                    Userdb.findOne(
+                      { email },
+                      (err, user) => {
+                        console.log(user);
+                      }
+                    );
+                    // res.redirect("/profile");
+                    return done(null, { userID: user._id });
+                } else {
+                    console.log("Unsuccessful login!");
+                    return done(null, false);
+                }
+            });
+          })
+  })
+);
+
 
 // Send every request to the React app
 // Define any API routes before this runs

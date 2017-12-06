@@ -1,6 +1,5 @@
 const Userdb = require("../models/users");
 
-
 //methods to connect to mongo db
 module.exports  = {
     findAll: function(req, res) {
@@ -29,9 +28,7 @@ module.exports  = {
                 console.log(user);
                 console.log("This is the user ID for new user:");
                 console.log(user._id);
-                Userdb.findById({
-                    userID: user._id
-                }).then((user, error) => {
+                Userdb.findById(user._id).then((user, error) => {
                     if (error) throw error;
                     console.log("NEW USER CREATED: ");
                     console.log(user);

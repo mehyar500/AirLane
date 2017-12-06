@@ -31,6 +31,11 @@ const UserSchema = new Schema({
       },
       "Password should be longer."
     ]
+  },
+  // `date` must be of type Date. The default value is the current date
+  userCreated: {
+    type: Date,
+    default: Date.now
   }
 });
 
