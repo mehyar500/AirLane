@@ -17,7 +17,7 @@ class Appbar extends Component {
 
  constructor(props) {
     super(props);
-    this.state = { showModal: false, date: "", howMany: "", location: "", destination: "", price: "" };
+    this.state = { showModal: false, hideItem: false, date: "", howMany: "", location: "", destination: "", price: "" };
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
   }
@@ -46,21 +46,17 @@ class Appbar extends Component {
     API.savePlane(date, howMany, location, destination, price);
   };
 
-  state = { showModal: false, showMenu: false};
-
-  handleOpenMenu = () => {
-    this.setState({showMenu : true});
-  }
-  handleCloseMenu = () => {
-    this.setState({showMenu : false});
-  }
-
   componentDidMount() {
-    if (API.userAuth) {
-      return this.handleOpenMenu;
-    } else {
-      return this.handleCloseMenu;
-    }
+
+  }
+
+  checkAuth = (req, res) => {
+    
+    //   if ) {
+  //     this.setState({hideItem: false});
+  //   } else {
+  //     this.setState({ hideItem: true });
+  //   }
   }
 
   render() {
@@ -84,20 +80,19 @@ class Appbar extends Component {
             </NavItem>
           </Nav>
           <Nav pullRight>
-            {this.state.showMenu ? <NavDropdown showmenu={this.state.showMenu} title="Menu" id="navdropdown">
-                <MenuItem href="/profile">Profile</MenuItem>
-                <MenuItem href="/newplane">
-                  List You're Airplane Now
-                </MenuItem>
-                <MenuItem>Log Out</MenuItem>
-              </NavDropdown> : <Nav>
-                <NavItem>
-                  <Login />
-                </NavItem>
-                <NavItem>
-                  <Signup />
-                </NavItem>
-              </Nav>}
+            <NavDropdown hidden={this.state.hidden} title="Menu" id="navdropdown">
+              <MenuItem href="/profile">Profile</MenuItem>
+              <MenuItem href="/newplane">List You're Airplane Now</MenuItem>
+              <MenuItem>Log Out</MenuItem>
+            </NavDropdown>
+            <Nav hidden={this.state.hidden}>
+              <NavItem>
+                <Login />
+              </NavItem>
+              <NavItem>
+                <Signup />
+              </NavItem>
+            </Nav>
           </Nav>
         </Navbar.Collapse>
       </Navbar>;

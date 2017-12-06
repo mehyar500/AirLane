@@ -1,3 +1,4 @@
+import Profile from '../components/Profile';
 import axios from "axios";
 
 export default {
@@ -17,22 +18,19 @@ export default {
   saveUser: userData => {
     // console.log(userData);
     axios.post("/signup", userData);
-    console.log("Done sending new user data to the route '/signup' and userData: " + userData);
   },
   // Saves a user profile to the database
   saveProfile: profileData => {
       axios.post("/profile", profileData);
     },
   //login user
-  loginUser: userData => {
-    console.log(userData);
-    axios.post("/login", userData);
-    console.log("Done sending loggin data to '/login' and userDate: " + userData);
+  facebookAuth: userData => {
+    axios.post("/auth/facebook", userData);
   },
   //check if user is authenticated
-  userAuth: () => {
-    axios.get("/userauth");
-    console.log("Done send authenticating user data to route'/userauth'")
+  profile: () => {
+    axios.get("/profile")
+         .then(res => {console.log(res); return res}).catch(err => {throw err});
   },
   // Gets all Plane
   getPlanes: () => {

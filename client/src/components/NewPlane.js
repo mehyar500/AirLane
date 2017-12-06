@@ -11,25 +11,14 @@ import "./Appbody.css";
 import API from "../Utils/API";
 
 class NewPlane extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showModal: false,
-      name: "",
-      type: "",
-      capacity: ""
-    };
-    this.open = this.open.bind(this);
-    this.close = this.close.bind(this);
-  }
 
-  open = () => {
-    this.setState({ showModal: true });
+  state = {
+    showModal: false,
+    name: "",
+    type: "",
+    capacity: ""
   };
 
-  close = () => {
-    this.setState({ showModal: false });
-  };
 
   // Handles updating component state when the user types into the input field
   handleChange = event => {
@@ -59,7 +48,7 @@ class NewPlane extends Component {
                   Name:
                 </Col>
                 <Col md={12}>
-                <FormControl type="text" onChange={this.handleChange} />
+                  <FormControl type="text" onChange={this.handleChange} />
                 </Col>
               </FormGroup>
               <FormGroup controlId="formHorizontalType">
@@ -67,7 +56,7 @@ class NewPlane extends Component {
                   Aircraft:
                 </Col>
                 <Col md={12}>
-                <FormControl type="text" onChange={this.handleChange} />
+                  <FormControl type="text" onChange={this.handleChange} />
                 </Col>
               </FormGroup>
               <FormGroup controlId="formHorizontalCapacity">
@@ -75,11 +64,15 @@ class NewPlane extends Component {
                   Seat Capacity:
                 </Col>
                 <Col md={12}>
-                <FormControl type="text" onChange={this.handleChange} />
+                  <FormControl type="text" onChange={this.handleChange} />
                 </Col>
               </FormGroup>
               <FormGroup>
-                <Button className="btn-primary" type="submit" onClick={this.handleSubmit}>
+                <Button
+                  className="btn-primary"
+                  type="submit"
+                  onClick={this.handleSubmit}
+                >
                   Create
                 </Button>
               </FormGroup>
