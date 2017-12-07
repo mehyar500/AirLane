@@ -54,20 +54,20 @@ class NewLane extends Component {
         </Row>
         <form>
                 <FormGroup>
-                  <ControlLabel htmlFor="filter_criterea_start_city">Start (City)</ControlLabel>
+                  <ControlLabel htmlFor="departure">Start (City)</ControlLabel>
                   <FormControl name="departure" type="text" placeholder="Enter City or Airport name" onChange={this.handleChange} />
                 </FormGroup>
                 <FormGroup>
-                  <ControlLabel htmlFor="filter_criterea_end_city">Destination (City)</ControlLabel>
+                  <ControlLabel htmlFor="arrival">Destination (City)</ControlLabel>
                   <FormControl name="arrival" type="text" placeholder="Enter City or Airport name" onChange={this.handleChange} />
                 </FormGroup>
                 <FormGroup>
-                  <ControlLabel htmlFor="filter_criterea_date">Flight Date</ControlLabel>
+                  <ControlLabel htmlFor="flight_date">Flight Date</ControlLabel>
                   <FormControl name="flight_date" type="text" placeholder="ex: 01/12/2019" onChange={this.handleChange} />
                 </FormGroup>
                 <FormGroup>
-                  <ControlLabel htmlFor="filter_criterea_flight_type">Flight Type</ControlLabel>
-                  <FormControl name="flight_type" type="select" placeholder="select" onChange={this.handleChange}>
+                  <ControlLabel htmlFor="flight_type">Flight Type</ControlLabel>
+                  <FormControl name="flight_type" componentClass="select" placeholder="select" onChange={this.handleChange}>
                     <option value="all">All Flights</option>
                     <option value="0">Only One-Way (A to B)</option>
                     <option value="1">Only Sightseeing Flights</option>
@@ -75,8 +75,8 @@ class NewLane extends Component {
                   </FormControl>
                 </FormGroup>
                 <FormGroup>
-                  <ControlLabel htmlFor="filter_criterea_price_range">Price per Seat</ControlLabel>
-                  <FormControl name="price_range" type="select" placeholder="Select" onChange={this.handleChange}>
+                  <ControlLabel htmlFor="price_range">Price per Seat</ControlLabel>
+                  <FormControl name="price_range" componentClass="select" placeholder="Select" onChange={this.handleChange}>
                     <option value="">Please select ...</option>
                     <option value="90">up to $90</option>
                     <option value="150">up to $150</option>
