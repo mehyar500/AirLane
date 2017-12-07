@@ -10,48 +10,6 @@ const authenticationMiddleware = require("../utils/authenticationMiddleware");
 //API Routes
 router.use("/api", apiRoutes);
 
-// userauth page. Only renders if authentication is verified, if not, redirect to root 
-router.get("/userauth", passport.authenticate('local'), (req, res) => {
-  //console log user info if any
-  console.log(req.user);
-  console.log(req.isAuthenticated());
-  res.redirect("/");
-});
-
-//Matches with "/signup" 
-router
-  .route("/signup")
-  .post(userController.create)
-
-//matches /login
-router.post(
-  "/login",
-  //authenticate input against database
-  passport.authenticate("local", {
-    successRedirect: "/profile", //if login was successful, redirect to profile page
-    failureRedirect: "/" //if login unseccussful, redirect to homepage
-  })
-);
-
-//matches /logout
-router.post("/logout", (req, res) => {
-  console.log(`Logging out user:`);
-  console.log(req.user);
-  req.session.destroy( (err) => {
-      req.logout();
-      res.send(true);
-  })
-});
-
-// profile page. Only renders if authentication is verified, if not, redirect to root 
-router.get("/profile", /*authenticationMiddleware()*/ passport.authenticate('local'), (req, res) => {
-  //console log user info if any
-  console.log(req.user);
-  console.log(req.isAuthenticated());
-  res.redirect("/")
-});
-
-
 // If no API routes are hit, send the React app
 router.use((req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
