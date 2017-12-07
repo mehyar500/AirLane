@@ -6,17 +6,18 @@ import {
   NavDropdown,
   MenuItem
 } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import Signup from "./Signup";
 import Login from "./Login";
 import API from "../Utils/API";
+import NewLane from "./NewLane";
 
 class Appbar extends Component {
 
 
  constructor(props) {
     super(props);
-    this.state = { showModal: false, date: "", howMany: "", location: "", destination: "", price: "" };
+    this.state = { showModal: false, disabled: false, date: "", howMany: "", location: "", destination: "", price: "" };
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
   }
@@ -45,66 +46,49 @@ class Appbar extends Component {
     API.savePlane(date, howMany, location, destination, price);
   };
 
-  state = { showModal: false, showMenu: false};
-
-  handleOpenMenu = () => {
-    this.setState({showMenu : true});
-  }
-  handleCloseMenu = () => {
-    this.setState({showMenu : false});
-  }
-
   componentDidMount() {
-    if (API.userAuth) {
-      return this.handleOpenMenu;
-    } else {
-      return this.handleCloseMenu;
-    }
+    API.userAuth();
+    API.userAuth() ? this.setState({ disabled : false}) : this.setState({ disabled : true});
   }
 
   render() {
-    return (
-      <Navbar>
-
+    return <Navbar fluid fixedTop>
         <Navbar.Header>
           <Navbar.Brand>
             <a href="/">airLane</a>
           </Navbar.Brand>
-          <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
-        <Nav>
-          <NavItem>
-            <NavLink to="/about">
+          <Nav>
+            <NavItem>
+              {/* <NavLink to="/about">
               About Us
-              </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink to="/partner">
+              </NavLink> */}
+            </NavItem>
+            <NavItem>
+              {/* <NavLink to="/partner">
               Become a Partner
-            </NavLink>
-          </NavItem>
-        </Nav>
-
-        <Nav pullRight>
-          {this.state.showMenu ? (<NavDropdown showmenu={this.state.showMenu} title="Menu" id="navdropdown">
-            <MenuItem href="/profile">Profile</MenuItem>
-            <MenuItem href="/newplane">List You're Airplane Now</MenuItem>
-            <MenuItem>Log Out</MenuItem>
-          </NavDropdown>) : (
-            <Nav>
-              <NavItem>
-                <Login/>
-              </NavItem>
-              <NavItem>
-                <Signup/>
-              </NavItem>
-            </Nav>
-          )}
-        </Nav>
+            </NavLink> */}
+            </NavItem>
+          </Nav>
+          <Nav pullRight>
+            {this.state.disabled ? <NavDropdown disabled={this.state.disabled} title="Menu" id="navdropdown">
+                <MenuItem href="/profile">Profile</MenuItem>
+                <MenuItem href="/newplane">
+                  List You're Airplane Now
+                </MenuItem>
+                <MenuItem>Log Out</MenuItem>
+              </NavDropdown> : <Nav>
+                <NavItem>
+                  <Login />
+                </NavItem>
+                <NavItem>
+                  <Signup />
+                </NavItem>
+              </Nav>}
+          </Nav>
         </Navbar.Collapse>
-      </Navbar>
-    );
+      </Navbar>;
   }
 }
 

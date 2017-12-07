@@ -1,19 +1,20 @@
-const Resevationdb = require("../models/resevation");
+const Airlanedb = require("../models/airlane.js");
 
 //methods to connect to mongo db
 module.exports = {
   findAll: function(req, res) {
-    Resevationdb.find(console.log(res))
+    Airlanedb.find(console.log(res))
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findById: function(req, res) {
-    Resevationdb.findById(req.params.id)
+    Airlanedb.findById(req.params.id)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    Resevationdb.create(req.body)
+    console.log("Run create in airlaneController");
+    Airlanedb.create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => {
         console.log(err);
@@ -21,12 +22,12 @@ module.exports = {
       });
   },
   update: function(req, res) {
-    Resevationdb.findOneAndUpdate({ _id: req.params.id }, dbModel)
+    Airlanedb.findOneAndUpdate({ _id: req.params.id }, dbModel)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   remove: function(req, res) {
-    Resevationdb.findById({ _id: req.params.id })
+    Airlanedb.findById({ _id: req.params.id })
       .then(function(dbModel) {
         dbModel.remove();
       })

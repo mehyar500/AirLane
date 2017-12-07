@@ -5,11 +5,17 @@ import {
   FormGroup,
   FormControl,
   ControlLabel,
-  Modal,
-  Table
+  Modal
 } from "react-bootstrap";
 import API from "../Utils/API";
 import "./Appbody.css";
+// import {
+//   Button,
+//   FormGroup,
+//   FormControl,
+//   ControlLabel,
+//   Modal
+// } from "react-bootstrap";
 
 class AirLanes extends Component {
   constructor(props) {
@@ -49,26 +55,7 @@ class AirLanes extends Component {
         <Row>
           <Col md={6} mdOffset={3}>
             <h1>Create New Reservation Information</h1>
-            <Table responsive>
-              <thead>
-                <tr>
-                  <th>Flight Date</th>
-                  <th>Arrival</th>
-                  <th>Departure</th>
-                  <th>Flight Type</th>
-                  <th>Price</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><div className="flight_date"></div></td>
-                  <td><div className="arrival"></div></td>
-                  <td><div className="departure"></div></td>
-                  <td><div className="flight_type"></div></td>
-                  <td><div className="price"></div></td>
-                </tr>
-              </tbody>
-            </Table>
+            <div className="account">Account info here</div>
           </Col>
         </Row>
       </Grid>

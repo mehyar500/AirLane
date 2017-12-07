@@ -1,13 +1,13 @@
 const router = require("express").Router();
 const aircraftController = require("../../controllers/aircraftController");
 
-//Matches with "/api/aircraft"
+//Matches with "/api/airlane"
 router
   .route("/")
   .get(aircraftController.findAll)
   .post(aircraftController.create);
 
-//Matches with "/api/aircraft/:id"
+//Matches with "/api/airlane/:id"
 router
   .route("/:id")
   .get(aircraftController.findById)
@@ -15,4 +15,3 @@ router
   .delete(aircraftController.remove);
 
 module.exports = router;
- 

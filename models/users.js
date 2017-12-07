@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
+const passportLocalMongoose = require("passport-local-mongoose");
+const bcrypt = require("bcrypt");
 
 const userSchema = new Schema({
   firstName: {
@@ -33,6 +34,8 @@ const userSchema = new Schema({
   }
 });
 
-const User = mongoose.model("Userdb", userSchema);
+userSchema.plugin(passportLocalMongoose);
 
-module.exports = User;
+const Userdb = mongoose.model("Userdb", userSchema);
+
+module.exports = Userdb;
