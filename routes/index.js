@@ -7,6 +7,8 @@ const path = require("path");
 const session = require("express-session");
 const authenticationMiddleware = require("../utils/authenticationMiddleware");
 
+//API Routes
+router.use("/api", apiRoutes);
 
 // userauth page. Only renders if authentication is verified, if not, redirect to root 
 router.get("/userauth", passport.authenticate('local'), (req, res) => {
@@ -49,8 +51,6 @@ router.get("/profile", /*authenticationMiddleware()*/ passport.authenticate('loc
   res.redirect("/")
 });
 
-//API Routes
-router.use("/api", apiRoutes);
 
 // If no API routes are hit, send the React app
 router.use((req, res) => {
