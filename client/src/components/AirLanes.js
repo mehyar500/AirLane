@@ -5,19 +5,13 @@ import {
   FormGroup,
   FormControl,
   ControlLabel,
-  Modal
+  Modal,
+  Table
 } from "react-bootstrap";
 import API from "../Utils/API";
 import "./Appbody.css";
-// import {
-//   Button,
-//   FormGroup,
-//   FormControl,
-//   ControlLabel,
-//   Modal
-// } from "react-bootstrap";
 
-class NewResevation extends Component {
+class AirLanes extends Component {
   constructor(props) {
     super(props);
     this.state = { showModal: false, date: "", howMany: "", location: "", destination: "", price: "" };
@@ -46,8 +40,8 @@ class NewResevation extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const { date, howMany, location, destination, price } = this.state;
-    API.savePlane(date, howMany, location, destination, price);
   };
+
 
   render() {
     return (
@@ -55,7 +49,26 @@ class NewResevation extends Component {
         <Row>
           <Col md={6} mdOffset={3}>
             <h1>Create New Reservation Information</h1>
-            <div className="account">Account info here</div>
+            <Table responsive>
+              <thead>
+                <tr>
+                  <th>Flight Date</th>
+                  <th>Arrival</th>
+                  <th>Departure</th>
+                  <th>Flight Type</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><div className="flight_date"></div></td>
+                  <td><div className="arrival"></div></td>
+                  <td><div className="departure"></div></td>
+                  <td><div className="flight_type"></div></td>
+                  <td><div className="price"></div></td>
+                </tr>
+              </tbody>
+            </Table>
           </Col>
         </Row>
       </Grid>
@@ -63,4 +76,4 @@ class NewResevation extends Component {
   }
 }
 
-export default NewResevation;
+export default AirLanes;
