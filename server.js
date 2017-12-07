@@ -43,10 +43,7 @@ app.use(session({
     resave: true,
     saveUninitialized: false
 }));
-//initialize passport with express app
-app.use(passport.initialize());
-//setup a passport session to be used with express app
-app.use(passport.session());
+
 // Add routes, both API and view
 app.use(routes);
 

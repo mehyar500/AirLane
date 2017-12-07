@@ -19,19 +19,6 @@ export default {
     // console.log(userData);
     axios.post("/api/user/", userData);
   },
-  // Saves a user profile to the database
-  saveProfile: profileData => {
-      axios.post("/profile", profileData);
-    },
-  //login user
-  facebookAuth: userData => {
-    axios.post("/auth/facebook", userData);
-  },
-  //check if user is authenticated
-  profile: () => {
-    axios.get("/profile")
-         .then(res => {console.log(res); return res}).catch(err => {throw err});
-  },
   // Gets all Plane
   getPlanes: () => {
     axios.get("/api/aircraft");

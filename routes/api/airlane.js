@@ -1,17 +1,17 @@
 const router = require("express").Router();
-const aircraftController = require("../../controllers/aircraftController");
+const airlaneController = require("../../controllers/airlaneController");
 
 //Matches with "/api/airlane"
 router
   .route("/")
-  .get(aircraftController.findAll)
-  .post(aircraftController.create);
+  .get(airlaneController.findAll)
+  .post(airlaneController.create);
 
 //Matches with "/api/airlane/:id"
 router
   .route("/:id")
-  .get(aircraftController.findById)
-  .put(aircraftController.update)
-  .delete(aircraftController.remove);
+  .get(airlaneController.findById)
+  .put(airlaneController.update)
+  .delete(airlaneController.remove);
 
 module.exports = router;

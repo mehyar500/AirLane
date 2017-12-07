@@ -47,8 +47,7 @@ class Appbar extends Component {
   };
 
   componentDidMount() {
-    API.userAuth();
-    API.userAuth() ? this.setState({ disabled : false}) : this.setState({ disabled : true});
+    
   }
 
   render() {
