@@ -7,6 +7,7 @@ import {
   ControlLabel,
   Modal
 } from "react-bootstrap";
+import "./Profile.css";
 
 class Profile extends Component {
   constructor(props) {
@@ -55,104 +56,36 @@ class Profile extends Component {
   };
 
   render() {
-    return <div>
-        <div onClick={this.open}>Profile</div>
-        <Modal show={this.state.showModal} onHide={this.close}>
-          <Modal.Header closeButton>
-            <Modal.Title>Your Profile</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <div>
-              <form action="/profile">
-                <FormGroup>
-                  <ControlLabel htmlFor="firstName">
-                    First Name
-                  </ControlLabel>
-                  <FormControl name="firstName" type="text" placeholder="ex: Tom" onChange={this.handleChange} />
-                </FormGroup>
-                <FormGroup>
-                  <ControlLabel htmlFor="lastName">Last Name</ControlLabel>
-                  <FormControl name="lastName" type="text" placeholder="ex: Smith" onChange={this.handleChange} />
-                </FormGroup>
-                <FormGroup>
-                  <ControlLabel htmlFor="emailAddress">Eamil</ControlLabel>
-                  <FormControl name="emailAddress" type="email" placeholder="ex: tomSmith@email.com" onChange={this.handleChange} />
-                </FormGroup>
-                <FormGroup>
-                  <ControlLabel htmlFor="jetModel">Jet's Model</ControlLabel>
-                  <FormControl name="jetModel" type="text" placeholder="Jet Model" onChange={this.handleChange} />
-                </FormGroup>
-                <FormGroup>
-                  <ControlLabel htmlFor="jstId">
-                    Jet's Identification
-                  </ControlLabel>
-                  <FormControl name="jstId" type="text" placeholder="Jet's Identification" onChange={this.handleChange} />
-                </FormGroup>
-                <FormGroup>
-                  <ControlLabel htmlFor="jstLocation">
-                    Jet's Identification
-                  </ControlLabel>
-                  <FormControl name="jstLocation" type="text" placeholder="Jet's Location" onChange={this.handleChange} />
-                </FormGroup>
-                <FormGroup controlId="maxocc">
-                  <ControlLabel>Max Occupancy</ControlLabel>
-                    <FormControl name="maxocc" componentClass="select" placeholder="select">
-                      <option value="select">select</option>
-                      <option value="other">6</option>
-                      <option value="other">8</option>
-                      <option value="other">10</option>
-                      <option value="other">12</option>
-                      <option value="other">14</option>
-                      <option value="other">16</option>
-                      <option value="other">18</option>
-                      <option value="other">20</option>
-                  </FormControl>
-                </FormGroup>
-                <FormGroup controlId="phone">
-                  <ControlLabel>Satcom Phone</ControlLabel>
-                    <FormControl name="phone" componentClass="select" placeholder="select">
-                      <option value="select">select</option>
-                      <option value="other">Yes</option>
-                      <option value="other">No</option>
-                  </FormControl>
-                </FormGroup>
-                <FormGroup controlId="wifi">
-                  <ControlLabel>Wi-Fi</ControlLabel>
-                    <FormControl name="wifi" componentClass="select" placeholder="select">
-                      <option value="select">select</option>
-                      <option value="other">Yes</option>
-                      <option value="other">No</option>
-                  </FormControl>
-                </FormGroup>
-                <FormGroup controlId="entertainment">
-                  <ControlLabel>Entertainment Center</ControlLabel>
-                    <FormControl name="entertainment" componentClass="select" placeholder="select">
-                      <option value="select">select</option>
-                      <option value="other">Yes</option>
-                      <option value="other">No</option>
-                  </FormControl>
-                </FormGroup>
-                <FormGroup controlId="bedroom">
-                  <ControlLabel>Den, Master Bedroom</ControlLabel>
-                    <FormControl name="bedroom" componentClass="select" placeholder="select">
-                      <option value="select">select</option>
-                      <option value="other">Yes</option>
-                      <option value="other">No</option>
-                  </FormControl>
-                </FormGroup>
+    return <div class="container">
+    <div class="row">
+      <div class="offset-lg-4 col-lg-4 col-sm-6 col-12 main-section text-center">
+          <div class="row">
+              <div class="col-lg-12 col-sm-12 col-12 profile-header"></div>
+          </div>
+          <div class="row user-detail">
+              <div class="col-lg-12 col-sm-12 col-12">
+                  <img src="image/man.png" class="rounded-circle img-thumbnail" />
+                  <h5>John Addison</h5>
+                  <p><i class="fa fa-map-marker" aria-hidden="true"></i> New Jersey, USA.</p>
 
-                
-                <Button bsStyle="primary" type="submit" value="submit" onClick={this.handleSubmit}>
-                  Submit
-                </Button>
-              </form>
-            </div>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button onClick={this.close}>Close</Button>
-          </Modal.Footer>
-        </Modal>
-      </div>;
+                  <hr/>
+                  <a href="#" class="btn btn-success btn-sm">Follow</a>
+                  <a href="#" class="btn btn-info btn-sm">Send Messege</a>
+
+                  <hr/>
+                  <span>Lorem ips consectetur adipisium ,eiusmod tempor incididuin reprehendeanim.</span>
+              </div>
+          </div>
+          <div class="row user-social-detail">
+              <div class="col-lg-12 col-sm-12 col-12">
+                  <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                  <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                  <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>;
   }
 }
 

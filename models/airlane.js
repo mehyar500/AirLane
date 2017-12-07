@@ -2,21 +2,21 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const airLaneSchema = new Schema({
-    date: {
-        type: Date
-    },
-    howMany: {
-        type: Number
-    },
-    location: {
-        type: String
-    },
-    destination: {
-        type: String
-    },
-    price: {
-        type: Number
-    }
+  departure: {
+    type: String
+  },
+  arrival: {
+    type: String
+  },
+  flight_date: {
+    type: String
+  },
+  flight_type: {
+    type: String
+  },
+  price_range: {
+    type: String
+  }
 });
 
 const Airlanedb = mongoose.model("Airlanedb", airLaneSchema);

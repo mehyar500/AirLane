@@ -39,8 +39,7 @@ class NewLane extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const { departure, arrival, flight_date, flight_type, price_range } = this.state;
-    API.saveLane(departure, arrival, flight_date, flight_type, price_range);
-    
+    return API.saveLane(departure, arrival, flight_date, flight_type, price_range);
   };
 
   render() {
@@ -67,16 +66,16 @@ class NewLane extends Component {
                 </FormGroup>
                 <FormGroup>
                   <ControlLabel htmlFor="flight_type">Flight Type</ControlLabel>
-                  <FormControl name="flight_type" componentClass="select" placeholder="select" onChange={this.handleChange}>
-                    <option value="all">All Flights</option>
-                    <option value="0">Only One-Way (A to B)</option>
-                    <option value="1">Only Sightseeing Flights</option>
-                    <option value="2">Only Excursions (A to B to A)</option>
+                  <FormControl name="flight_type" componentClass="select" placeholder="select" onSelect={this.handleChange}>
+                    <option value="0">All Flights</option>
+                    <option value="1">Only One-Way (A to B)</option>
+                    <option value="2">Only Sightseeing Flights</option>
+                    <option value="3">Only Excursions (A to B to A)</option>
                   </FormControl>
                 </FormGroup>
                 <FormGroup>
                   <ControlLabel htmlFor="price_range">Price per Seat</ControlLabel>
-                  <FormControl name="price_range" componentClass="select" placeholder="Select" onChange={this.handleChange}>
+                  <FormControl name="price_range" componentClass="select" placeholder="Select" onSelect={this.handleChange}>
                     <option value="">Please select ...</option>
                     <option value="90">up to $90</option>
                     <option value="150">up to $150</option>
