@@ -13,7 +13,6 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const bcrypt = require('bcrypt');
 
-
 //set up cookies for sessions
 app.use(cookieParser());
 
