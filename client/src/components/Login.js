@@ -43,7 +43,7 @@ class Login extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const {email, password} = this.state;
-    API.loginUser( {email, password} );
+    API.facebookAuth(email, password);
   };
 
   render() {
@@ -54,7 +54,7 @@ class Login extends Component {
             <Modal.Title>Log In</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-           <div className="three">
+           <div>
               <form action="/login">
                 <FormGroup>
                   <ControlLabel htmlFor="email">Email</ControlLabel>
@@ -80,7 +80,7 @@ class Login extends Component {
               </div>
               <div className="row"></div>                                         
               <div className="well" style={wellStyles}>
-               <Button bsStyle="primary" bsSize="large" block>Facebook</Button>
+               <Button onClick={this.handleSubmit} bsStyle="primary" bsSize="large" block>Facebook</Button>
                <Button bsStyle="danger" bsSize="large" block>Google</Button>
               </div>
             </div>
