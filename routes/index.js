@@ -1,7 +1,6 @@
 const apiRoutes = require("./api/index.js");
 const router = require("express").Router();
 const Userdb = require("../models/users.js");
-const userController = require("../controllers/userController");
 const path = require("path");
 const session = require("express-session");
 

@@ -10,7 +10,7 @@ const app = express();
 const Userdb = require("./models/users");
 //authentication packages
 const session = require('express-session');
-const MongoStore = require('connect-mongo')(session);
+// const MongoStore = require('connect-mongo')(session);
 const bcrypt = require('bcrypt');
 
 //set up cookies for sessions
@@ -35,13 +35,6 @@ mongoose.Promise = global.Promise;
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/airlane";
 mongoose.connect(MONGODB_URI, { useMongoClient: true });
 
-//initialize passport and express-session
-app.use(session({
-    secret: 'holla hoops', //random key
-    store: new MongoStore({ url: MONGODB_URI }),
-    resave: true,
-    saveUninitialized: false
-}));
 
 // Add routes, both API and view
 app.use(routes);
